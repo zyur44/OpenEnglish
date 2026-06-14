@@ -73,7 +73,7 @@ Tất cả các thành viên thực hiện các bước sau để thiết lập 
 
    ```bash
    cd C:/xampp/htdocs/
-   git clone <đường_dẫn_repository_github_của_nhóm>
+   git clone https://github.com/zyur44/OpenEnglish.git
    ```
 
 2. Khởi tạo cơ sở dữ liệu (MySQL)
@@ -87,5 +87,5 @@ Tất cả các thành viên thực hiện các bước sau để thiết lập 
 3. Chạy thử giao diện
    * Mở trình duyệt và truy cập:
 
-   `http://localhost/english-learning-platform/views/home.php`
+   `http://localhost/OpenEnglish/connectdb/db.php`
 
