@@ -16,7 +16,7 @@ Nhóm gồm 6 thành viên được chia tách module độc lập nhằm đảm
 * **Backend 1 (BE 1):** Phụ trách Logic Xác thực (Đăng ký, Đăng nhập, phân quyền Session) + API/Logic CRUD tài khoản cho Admin.
 * **Backend 2 (BE 2):** Phụ trách Logic nội dung Khóa học (Lấy danh sách khóa học, hiển thị danh sách Unit, bài giảng video, tài liệu đính kèm).
 * **Backend 3 (BE 3):** Phụ trách Logic Bài tập trắc nghiệm (Tải câu hỏi, nhận đáp án trắc nghiệm 4 lựa chọn A, B, C, D).
-* **Team Leader (Bạn):** Phụ trách Logic lõi **Tính toán Tiến trình học tập (Progress Tracking)** + Kết nối hệ thống + Quản trị Database chung.
+* **Team Leader:** Phụ trách Logic lõi **Tính toán Tiến trình học tập (Progress Tracking)** + Kết nối hệ thống + Quản trị Database chung.
 
 ---
 
@@ -59,30 +59,33 @@ english-learning-platform/
 │
 └── .gitignore                    # Chặn đẩy file rác lên Git
 
-🚀 Hướng dẫn cài đặt & Chạy dự án (XAMPP)
+```
+---
+
+## 🚀 Hướng dẫn cài đặt & chạy dự án (XAMPP)
+
 Tất cả các thành viên thực hiện các bước sau để thiết lập môi trường chạy code trên máy cục bộ (Localhost):
 
-Bước 1: Sao chép dự án vào thư mục XAMPP
-Mở phần mềm Git Bash hoặc Terminal.
+1. Sao chép dự án vào thư mục XAMPP
+   * Mở Git Bash hoặc Terminal.
+   * Di chuyển vào thư mục cài đặt của XAMPP (Windows mặc định là `C:\xampp\htdocs\`).
+   * Thực hiện clone project về:
 
-Di chuyển vào thư mục cài đặt của XAMPP (mặc định trên Windows là C:\xampp\htdocs\).
+   ```bash
+   cd C:/xampp/htdocs/
+   git clone <đường_dẫn_repository_github_của_nhóm>
+   ```
 
-Thực hiện clone project về:
+2. Khởi tạo cơ sở dữ liệu (MySQL)
+   * Mở XAMPP Control Panel và nhấn Start cho Apache và MySQL.
+   * Mở trình duyệt và truy cập: `http://localhost/phpmyadmin/`.
+   * Chọn tab SQL trên thanh công cụ.
+   * Mở file `docs/database_schema.sql` trong thư mục dự án, sao chép toàn bộ nội dung và dán vào khung SQL của phpMyAdmin.
+   * Nhấn Go để chạy.
+   * Hệ thống sẽ tạo database và các bảng cần thiết.
 
-cd C:/xampp/htdocs/
-git clone <đường_dẫn_repository_github_của_nhóm>
+3. Chạy thử giao diện
+   * Mở trình duyệt và truy cập:
 
-Bước 2: Khởi tạo Cơ sở dữ liệu (MySQL)
-Mở XAMPP Control Panel và nhấn Start hai dịch vụ Apache và MySQL.
-
-Truy cập vào trình duyệt theo đường dẫn: http://localhost/phpmyadmin/.
-
-Chọn thẻ SQL ở thanh công cụ phía trên.
-
-Mở file docs/database_schema.sql trong thư mục dự án, copy toàn bộ nội dung bên trong, dán vào khung SQL của phpMyAdmin rồi bấm nút Go (Thực hiện).
-
-Hệ thống sẽ tự động tạo database tên là english_learning_db với đầy đủ các bảng dữ liệu mẫu.
-
-Bước 3: Chạy thử giao diện
-Mở trình duyệt và truy cập đường dẫn: http://localhost/english-learning-platform/views/home.php
+   `http://localhost/english-learning-platform/views/home.php`
 
