@@ -43,7 +43,7 @@ OpenEnglish/
 │   │   └── js/                   # main.js, auth.js, quiz.js
 │   └── uploads/                  # Nơi chứa tài liệu PDF, video bài giảng tải lên
 │
-├── views/                        # CÁC TRANG GIAO DIỆN CHÍNH (Đuôi .php để đổ dữ liệu)
+├── ui/                           # CÁC TRANG GIAO DIỆN CHÍNH (Đuôi .php để đổ dữ liệu)
 │   ├── includes/                 # header.php, footer.php (Dùng chung)
 │   ├── home.php                  # Trang chủ
 │   ├── about.php                 # Trang giới thiệu ngắn gọn

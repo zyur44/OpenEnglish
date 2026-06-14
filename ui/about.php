@@ -1,0 +1,3 @@
+<?php
+    //Trang giới thiệu
+?>
