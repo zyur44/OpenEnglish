@@ -25,7 +25,7 @@ Nhóm gồm 6 thành viên được chia tách module độc lập nhằm đảm
 Để không ảnh hưởng đến code của nhau, các thành viên tuân thủ nghiêm ngặt sơ đồ cây thư mục dưới đây:
 
 ```text
-english-learning-platform/
+OpenEnglish/
 │
 ├── config/                       # Cấu hình hệ thống chung
 │   └── db.php                    # File kết nối Database MySQL qua PDO
