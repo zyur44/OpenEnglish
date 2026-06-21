@@ -3,9 +3,11 @@
     define("year", 2026); 
     const KH = "Cơ bản"; 
 
-    require __DIR__.'/../connectdb/db.php'; 
-    $sql = "SELECT * FROM questions"; 
-    $msql = $pdo->query($sql); 
+    require __DIR__.'/../connectdb/db.php';
+
+    $quiz_id = isset($_GET['quiz_id']) ? $_GET['quiz_id'] : 1;
+    $sql = "SELECT * FROM questions WHERE quiz_id = $quiz_id";
+    $msql = $pdo->query($sql);
     $question = $msql->fetchAll(); 
 ?> 
 <!DOCTYPE html> 
