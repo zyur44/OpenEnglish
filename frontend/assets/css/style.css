@@ -1,0 +1,338 @@
+
+:root {
+    --primary-color: #2563eb;   
+    --primary-hover: #1d4ed8;
+    --secondary-color: #10b981;  
+    --danger-color: #ef4444;     
+    --warning-color: #f59e0b;    
+    --bg-color: #f4f7f6;         
+    --text-main: #1f2937;       
+    --text-muted: #6b7280;       
+    --border-color: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-main);
+    line-height: 1.5;
+    background-color: var(--bg-color);
+}
+
+/* 2. GIAO DIỆN XÁC THỰC  */
+
+.fe2-bg-wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../image/course_thumbnail/nen.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 20px 20px 10%;
+}
+
+/* Khối Form trắng*/
+.auth-box {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 440px; /* Giữ nguyên độ rộng 440px như code cũ của cậu cho đẹp */
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
+
+.auth-box h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 32px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.auth-box .subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.auth-switch a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+/* 3. GIAO DIỆN PROFILE */
+.profile-container {
+    display: flex;
+    max-width: 1000px;
+    margin: 0;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.profile-sidebar {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-sidebar .avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.profile-sidebar h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.profile-sidebar p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.profile-content {
+    flex: 2;
+    padding: 40px;
+}
+
+.profile-content h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--bg-color);
+}
+
+/* 4. GIAO DIỆN ADMIN DASHBOARD*/
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background-color: #111827; 
+    color: #9ca3af;
+    padding: 24px 0;
+}
+
+.admin-brand {
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 700;
+    padding: 0 24px 24px 24px;
+    border-bottom: 1px solid #1f2937;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.admin-menu {
+    list-style: none;
+}
+
+.admin-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 14px 24px;
+    color: #9ca3af;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.admin-menu li.active a, .admin-menu li a:hover {
+    background-color: #1f2937;
+    color: var(--white);
+    border-left: 4px solid var(--primary-color);
+}
+
+.admin-main {
+    flex: 1;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-nav {
+    background-color: var(--white);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-content {
+    padding: 32px;
+    flex: 1;
+}
+
+/* Bảng dữ liệu Admin */
+.table-responsive {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #f8fafc;
+    padding: 16px;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 15px;
+}
+
+.admin-table tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Các nút chức năng trong Admin */
+.btn-sm {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-success { background-color: var(--secondary-color); color: var(--white); }
+.btn-warning { background-color: var(--warning-color); color: var(--white); }
+.btn-danger { background-color: var(--danger-color); color: var(--white); }
+
+/* Responsive cơ bản */
+@media (max-width: 768px) {
+    .profile-container, .admin-container { flex-direction: column; }
+    .admin-sidebar { width: 100%; }
+}
+/* NÚT tải AVATAR*/
+.avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar-wrapper .avatar {
+    margin-bottom: 12px; 
+}
+
+.btn-upload-avatar {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-upload-avatar:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05); 
+}
+/* NÚT BẤM CHÍNH (LOGIN, REGISTER, PROFILE)*/
+.btn-primary {
+    background-color: var(--primary-color); 
+    color: var(--white);                   
+    width: 100%;                          
+    padding: 12px 16px;                   
+    border: none;                          
+    border-radius: 10px;                  
+    font-size: 16px;                      
+    font-weight: 600;                     
+    cursor: pointer;                       
+    transition: all 0.3s ease;           
+}
+
+/* Hiệu ứng khi di chuột*/
+.btn-primary:hover {
+    background-color: var(--primary-hover); 
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); 
+}
+
+/* Hiệu ứng khi bấm click chuột) */
+.btn-primary:active {
+    transform: scale(0.98); 
+}

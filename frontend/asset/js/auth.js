@@ -1,1 +1,0 @@
-//Xử lý JS chung
