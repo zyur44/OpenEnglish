@@ -1,19 +1,31 @@
 <?php
 session_start();
+header('Content-Type: application/json');
 require_once "../config/database.php";
 
-if ($_SESSION['role'] != 'admin') exit;
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    echo json_encode(["status"=>"error","message"=>"No permission"]);
+    exit;
+}
 
-$id = $_POST['id'];
-$fullname = $_POST['fullname'];
-$email = $_POST['email'];
-$role = $_POST['role'];
+try {
 
-$stmt = $conn->prepare("UPDATE users
-                        SET fullname=?, email=?, role=?
-                        WHERE id=?");
+    $id = $_POST['id'];
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $role = $_POST['role'];
 
-$stmt->execute([$fullname, $email, $role, $id]);
+    $stmt = $conn->prepare("
+        UPDATE users
+        SET fullname=?, email=?, role=?
+        WHERE id=?
+    ");
 
-echo json_encode(["status" => "success"]);
+    $stmt->execute([$fullname, $email, $role, $id]);
+
+    echo json_encode(["status"=>"success"]);
+
+} catch (Exception $e) {
+    echo json_encode(["status"=>"error","message"=>"Update failed"]);
+}
 ?>
