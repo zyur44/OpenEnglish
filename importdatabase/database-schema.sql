@@ -4,11 +4,11 @@
 -- =========================================================================
 
 -- 1. Khởi tạo Database (Nếu chưa có)
-CREATE DATABASE IF NOT EXISTS `english_learning_db`
+CREATE DATABASE IF NOT EXISTS `OpenEnglish`
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
-USE `english_learning_db`;
+USE `OpenEnglish`;
 
 -- Tắt kiểm tra khóa ngoại tạm thời để tránh lỗi thứ tự tạo bảng
 SET FOREIGN_KEY_CHECKS = 0;
