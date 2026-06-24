@@ -1,15 +1,15 @@
 # OpenEnglish
 
-**Project:** Open English học online thông qua video bài giảng, tài liệu, bài tập hoặc test (Free 100%)
-**Group:** 11
-Dự án xây dựng trang web học tiếng Anh online thông qua video bài giảng, tài liệu và hệ thống bài tập trắc nghiệm thông minh. Dự án sử dụng ngôn ngữ **PHP thuần (PDO)** cho Backend, kết hợp với **HTML, CSS, JavaScript** truyền thống cho Frontend, chạy trên môi trường **XAMPP (Apache & MySQL)**.
+* **Project:** Open English học online thông qua video bài giảng, tài liệu, bài tập hoặc test (Free 100%)
+* **Group:** 11
+* Dự án xây dựng trang web học tiếng Anh online thông qua video bài giảng, tài liệu và hệ thống bài tập trắc nghiệm thông minh. Dự án sử dụng ngôn ngữ **PHP thuần (PDO)** cho Backend, kết hợp với **HTML, CSS, JavaScript** truyền thống cho Frontend, chạy trên môi trường **XAMPP (Apache & MySQL)**.
 
-**Source code & team management:** GitHub
-**Diagrams (DFD/UML/DB schema):** https://app.diagrams.net/
-**IDE:** VS Code
-**Technology:** HTML, CSS,  JavaScript, PHP, MySQL,…
-**Slide:** Office 
-**Document:** Office
+* **Source code & team management:** GitHub
+* **Diagrams (DFD/UML/DB schema):** https://app.diagrams.net/
+* **IDE:** VS Code
+* **Technology:** HTML, CSS,  JavaScript, PHP, MySQL,…
+* **Slide:** Office 
+* **Document:** Office
 
 * **Thời gian thực hiện:** 3 tuần (21 ngày)
 * **Mô hình quản lý:** Monorepo (Tất cả code tập trung tại một Repository)
