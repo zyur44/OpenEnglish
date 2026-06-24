@@ -1,0 +1,14 @@
+# Bỏ qua file cấu hình database (Chứa mật khẩu quan trọng)
+connectdb/db.php
+
+# Bỏ qua file môi trường hoặc các file local cá nhân
+.env
+.DS_Store
+Thumbs.db
+
+# Bỏ qua thư mục chứa file tải lên của người dùng (nếu có)
+frontend/upload/
+
+# Bỏ qua các file rác của trình soạn thảo
+.vscode/
+*.log
