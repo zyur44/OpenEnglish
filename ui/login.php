@@ -33,6 +33,6 @@
     </div>
 </div>
 
-<script src="../frontend/asset/js/auth.js"></script>
+<script src="../frontend/asset/js/main.js"></script>
 </body>
 </html>
