@@ -13,6 +13,11 @@ body {
     padding-bottom: 300px;
 }
 
+section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 nav{
     background-color: rgb(130, 171, 233);
     margin-bottom: 20px;
@@ -56,4 +61,32 @@ nav a:hover{
 
 nav li:first-child{
     margin-right: auto;
+}
+
+.oe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    align-items: stretch;
+    justify-items: center;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.oe-card {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.oe-card img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: cover;
+    display: block;
 }

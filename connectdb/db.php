@@ -21,8 +21,8 @@
         $pdo = new PDO($dsn, $user, $pass, $options);
         
         // Dòng này có thể mở ra để test lúc đầu, khi chạy thật thì nên comment lại
-        echo "Kết nối cơ sở dữ liệu qua XAMPP thành công! <br>";
-        echo "Giờ thì làm việc đi!";
+        // echo "Kết nối cơ sở dữ liệu qua XAMPP thành công! <br>";
+        // echo "Giờ thì làm việc đi!";
         
     } catch (\PDOException $e) {
         // Nếu kết nối thất bại, dừng hệ thống và in ra lỗi

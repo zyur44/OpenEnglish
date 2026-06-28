@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - OpenEnglish</title>
-    <link rel="stylesheet" href="../frontend/assets/css/style.css?v=1.2">
+    <link rel="stylesheet" href="../frontend/assets/css/admin.css?v=1.2">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
                 <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
             </div>
 
-            <button type="submit" class="btn-primary">Bắt đầu ngay!</button>
+            <button type="submit" class="btn-primary">Đăng Nhập</button>
 
             <div class="auth-switch">
                 Chưa có tài khoản? <a href="register.php">Đăng ký</a>

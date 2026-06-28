@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/../../connectdb/db.php';
 
-header('Content-Type: application/json; charset=utf-8');
-
 /**
  * Lấy danh sách tất cả khóa học
  * 
@@ -48,11 +46,16 @@ function getCourses() {
  * API Endpoint: Lấy danh sách khóa học
  * GET: /backend/course/get_courses.php
  */
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $result = getCourses();
-    echo json_encode($result);
-} else {
+if (__FILE__ === realpath($_SERVER['SCRIPT_FILENAME'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $result = getCourses();
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($result);
+        exit;
+    }
+
     http_response_code(405);
+    header('Content-Type: application/json; charset=utf-8');
     echo json_encode(['success' => false, 'message' => 'Method không hợp lệ']);
 }
 ?>

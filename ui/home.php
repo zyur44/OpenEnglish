@@ -6,7 +6,6 @@ $page_title = "Open English - Trang chủ";
 require __DIR__ . '/includes/header.php';
 ?>
 
-
 <title>Home</title>
 <link rel="stylesheet" href="../frontend/assets/css/style.css">
 <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
@@ -21,10 +20,6 @@ require __DIR__ . '/includes/header.php';
             Học mọi lúc, mọi nơi với video bài giảng,
             tài liệu PDF và bài kiểm tra trực tuyến.
         </p>
-
-        <a href="my-courses.php" class="oe-btn">
-            Bắt đầu học ngay
-        </a>
 
     </div>
 </section>
@@ -68,42 +63,4 @@ require __DIR__ . '/includes/header.php';
 
 </section>
 
-<!-- Khóa học nổi bật -->
-<section class="oe-container">
-
-    <h2>Khóa học nổi bật</h2>
-
-    <div class="oe-grid">
-
-        <div class="oe-card">
-
-            <h3>English Basic</h3>
-
-            <p>
-                Khóa học dành cho người mới bắt đầu học tiếng Anh.
-            </p>
-
-            <a href="course.php?course_id=1">
-                Xem khóa học
-            </a>
-
-        </div>
-
-        <div class="oe-card">
-
-            <h3>English Communication</h3>
-
-            <p>
-                Phát triển kỹ năng giao tiếp tiếng Anh thực tế.
-            </p>
-
-            <a href="course.php?course_id=2">
-                Xem khóa học
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
 <?php require __DIR__ . '/includes/footer.php'; ?>

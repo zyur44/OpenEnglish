@@ -11,12 +11,12 @@
 
 
     <!-- ================= BANNER TRANG ================= -->
-    <div class="oe-page-banner">
+    <section class="oe-page-banner">
         <div class="oe-container">
             <h1>Giới thiệu về Open English</h1>
             <p>Học tiếng Anh online miễn phí &mdash; đơn giản, rõ ràng, hiệu quả.</p>
         </div>
-    </div>
+    </section>
 
     <!-- ================= TỔNG QUAN ================= -->
     <section class="oe-section">
