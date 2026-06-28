@@ -6,6 +6,10 @@ $page_title = "Khóa học của tôi";
 require __DIR__ . '/includes/header.php';
 ?>
 
+<title>My course</title>
+<link rel="stylesheet" href="../frontend/assets/css/style.css">
+<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+
 <section class="oe-container">
 
     <h1>Khóa học của tôi</h1>

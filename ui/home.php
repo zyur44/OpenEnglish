@@ -6,6 +6,11 @@ $page_title = "Open English - Trang chủ";
 require __DIR__ . '/includes/header.php';
 ?>
 
+
+<title>Home</title>
+<link rel="stylesheet" href="../frontend/assets/css/style.css">
+<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+
 <!-- Banner -->
 <section class="oe-hero">
     <div class="oe-container">
@@ -101,5 +106,4 @@ require __DIR__ . '/includes/header.php';
     </div>
 
 </section>
-
 <?php require __DIR__ . '/includes/footer.php'; ?>

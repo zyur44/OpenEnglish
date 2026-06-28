@@ -6,6 +6,10 @@
     require __DIR__ . '/includes/header.php';
 ?>
 
+<title>About</title>
+<link rel="stylesheet" href="../frontend/assets/css/style.css"> 
+
+
     <!-- ================= BANNER TRANG ================= -->
     <div class="oe-page-banner">
         <div class="oe-container">

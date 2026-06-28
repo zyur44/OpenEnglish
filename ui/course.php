@@ -29,6 +29,10 @@ $units = $stmtUnit->fetchAll();
 require __DIR__ . '/includes/header.php';
 ?>
 
+<title>Course</title>
+<link rel="stylesheet" href="../frontend/assets/css/admin.css">
+<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+    
 <section class="oe-container">
 
     <div class="oe-course-banner">

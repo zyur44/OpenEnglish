@@ -1,11 +1,8 @@
 <?php
-session_start();
 header('Content-Type: application/json');
+require_once __DIR__ . '/auth_functions.php';
 
-session_destroy();
+$result = logoutUser();
 
-echo json_encode([
-    "status"=>"success",
-    "message"=>"Logged out"
-]);
+echo json_encode($result);
 ?>

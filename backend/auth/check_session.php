@@ -1,27 +1,12 @@
 <?php
-session_start();
 header('Content-Type: application/json');
+require_once __DIR__ . '/auth_functions.php';
 
-try {
-    if (!isset($_SESSION['user_id'])) {
-        echo json_encode([
-            "status"=>"error",
-            "message"=>"Not logged in"
-        ]);
-        exit;
-    }
+$result = getSessionStatus();
 
-    $role = $_SESSION['role'];
-
-    echo json_encode([
-        "status"=>"success",
-        "user_id"=>$_SESSION['user_id'],
-        "role"=>$role,
-
-        "is_admin" => ($role === "admin")
-    ]);
-
-} catch (Exception $e) {
-    echo json_encode(["status"=>"error","message"=>"Server error"]);
+if ($result['status'] === 'error') {
+    http_response_code(401);
 }
+
+echo json_encode($result);
 ?>
