@@ -14,6 +14,9 @@
     <div class="auth-box">
         <h2>OpenEnglish</h2>
         <p class="subtitle">Đăng nhập để tiếp tục học tập</p>
+        <?php if (!empty($_GET['success'])): ?>
+            <div class="auth-success" style="background:#e6ffeb;border:1px solid #88d18f;padding:10px;margin:10px 0;border-radius:4px;color:#1a641a;"><?php echo htmlspecialchars($_GET['success'], ENT_QUOTES, 'UTF-8'); ?></div>
+        <?php endif; ?>
         <?php if (!empty($_GET['error'])): ?>
             <div class="auth-error" style="background:#ffe6e6;border:1px solid #ffb3b3;padding:10px;margin:10px 0;border-radius:4px;color:#800;"><?php echo htmlspecialchars($_GET['error'], ENT_QUOTES, 'UTF-8'); ?></div>
         <?php endif; ?>
