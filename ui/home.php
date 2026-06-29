@@ -1,8 +1,5 @@
 <?php
 // Trang màn hình chính
-
-$page_title = "Open English - Trang chủ";
-
 require __DIR__ . '/includes/header.php';
 ?>
 
@@ -14,9 +11,9 @@ require __DIR__ . '/includes/header.php';
 <!-- Banner -->
 <section class="oe-hero">
     <div class="oe-container">
-        <img src="../frontend/assets/image/logo/logo_placeholder.png">
+    <img src="../frontend/assets/image/logo/logo_placeholder.png">
 
-        <h1>Học Tiếng Anh Online Miễn Phí</h1>
+        <h1>OpenEnglish - Học Tiếng Anh Online Miễn Phí</h1>
 
         <p>
             Học mọi lúc, mọi nơi với video bài giảng,
@@ -29,10 +26,10 @@ require __DIR__ . '/includes/header.php';
 <!-- Giới thiệu -->
 <section class="oe-container">
 
-    <h2>Giới thiệu Open English</h2>
+    <h2>Giới thiệu OpenEnglish</h2>
 
     <p>
-        Open English là nền tảng học tiếng Anh trực tuyến miễn phí,
+        OpenEnglish là nền tảng học tiếng Anh trực tuyến miễn phí,
         giúp người học tiếp cận kiến thức thông qua video bài giảng,
         tài liệu PDF và các bài kiểm tra trắc nghiệm.
     </p>

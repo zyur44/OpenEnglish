@@ -12,7 +12,7 @@
     <section class="oe-page-banner">
         <div class="oe-container">
             <img src="../frontend/assets/image/logo/logo_placeholder.png">
-            <h1>Giới thiệu về Open English</h1>
+            <h1>Giới thiệu về OpenEnglish</h1>
             <p>Học tiếng Anh online miễn phí &mdash; đơn giản, rõ ràng, hiệu quả.</p>
         </div>
     </section>
@@ -20,9 +20,9 @@
     <!-- ================= TỔNG QUAN ================= -->
     <section class="oe-section">
         <div class="oe-container oe-about-intro">
-            <h2>Open English là gì?</h2>
+            <h2>OpenEnglish là gì?</h2>
             <p>
-                Open English là nền tảng học tiếng Anh trực tuyến hoàn toàn miễn phí,
+                OpenEnglish là nền tảng học tiếng Anh trực tuyến hoàn toàn miễn phí,
                 ra đời với mong muốn giúp mọi người Việt Nam tiếp cận tiếng Anh một
                 cách dễ dàng nhất &mdash; không tốn phí, không quảng cáo gây xao nhãng.
             </p>
@@ -62,7 +62,7 @@
         <div class="oe-container">
             <div class="oe-section-head">
                 <span class="oe-eyebrow">Cách thức hoạt động</span>
-                <h2>Học cùng Open English chỉ với 3 bước</h2>
+                <h2>Học cùng OpenEnglish chỉ với 3 bước</h2>
             </div>
 
             <div class="oe-steps-grid">
