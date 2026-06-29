@@ -130,6 +130,39 @@ nav li.nav-user .nav-dropdown li a:hover {
     width: 100%;
 }
 
+.oe-about-grid,
+.oe-steps-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: stretch;
+    width: 100%;
+}
+
+.oe-unit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.oe-unit-grid a {
+    display: block;
+    width: 100%;
+}
+
+.oe-unit-grid .oe-card {
+    min-height: 160px;
+    height: 100%;
+}
+
+.oe-unit-grid .oe-card > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
 .oe-card {
     width: 100%;
     max-width: 800px;
@@ -137,6 +170,8 @@ nav li.nav-user .nav-dropdown li a:hover {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    margin-top:20px;
 }
 
 .oe-card img {
