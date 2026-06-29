@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - OpenEnglish</title>
     <link rel="stylesheet" href="../frontend/assets/css/admin.css?v=1.2">
+    <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 </head>
 <body>
 
@@ -12,6 +14,9 @@
     <div class="auth-box">
         <h2>OpenEnglish</h2>
         <p class="subtitle">Đăng nhập để tiếp tục học tập</p>
+        <?php if (!empty($_GET['error'])): ?>
+            <div class="auth-error" style="background:#ffe6e6;border:1px solid #ffb3b3;padding:10px;margin:10px 0;border-radius:4px;color:#800;"><?php echo htmlspecialchars($_GET['error'], ENT_QUOTES, 'UTF-8'); ?></div>
+        <?php endif; ?>
 
         <form action="../backend/auth/login_process.php" method="POST">
             <div class="form-group">

@@ -12,9 +12,10 @@ function getUserByEmail(string $email): ?array
 {
     global $pdo;
 
-    $stmt = $pdo->prepare("\n        SELECT \
-            u.id,\n            u.full_name,\n            u.email,\n            COALESCE(u.password_hash, u.password) AS password_hash,\n            u.role_id,\n            COALESCE(r.name, 'Student') AS role_name\n        FROM users u\n        LEFT JOIN roles r ON u.role_id = r.id\n        WHERE u.email = ?\n        LIMIT 1\n    ");
-    $stmt->execute([$email]);
+    $sql = "SELECT u.id, u.full_name, u.email, u.password_hash AS password_hash, u.role_id, COALESCE(r.name, 'Student') AS role_name FROM users u LEFT JOIN roles r ON u.role_id = r.id WHERE u.email = ? LIMIT 1";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([trim($email)]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $user ?: null;
@@ -141,6 +142,7 @@ function loginUser(string $email, string $password): array
     $role = normalizeRoleName($user['role_name']);
 
     $_SESSION['user_id'] = $user['id'];
+    $_SESSION['full_name'] = $user['full_name'] ?? '';
     $_SESSION['role'] = $role;
     $_SESSION['role_id'] = $user['role_id'];
 
