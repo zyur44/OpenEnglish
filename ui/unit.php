@@ -1,74 +1,79 @@
 <?php
 // Trang xem video bài giảng, tài liệu và quiz
 
-$page_title = "Chi tiết Unit";
-
 require __DIR__ . '/../connectdb/db.php';
+require __DIR__ . '/includes/header.php';
 
-/* Lấy unit_id từ URL */
-$unit_id = isset($_GET['unit_id']) ? (int)$_GET['unit_id'] : 1;
-
-/* Lấy thông tin Unit */
-$stmt = $pdo->prepare("
-    SELECT u.*, c.title AS course_title
-    FROM units u
-    JOIN courses c ON u.course_id = c.id
-    WHERE u.id = ?
-");
-$stmt->execute([$unit_id]);
-
-$unit = $stmt->fetch();
-
-if (!$unit) {
-    die("Không tìm thấy Unit!");
+if (!function_exists('getUnitDetail')) {
+    require_once __DIR__ . '/../backend/course/get_unit_detail.php';
 }
 
-require __DIR__ . '/includes/header.php';
+$unitId = isset($_GET['unit_id']) ? (int)$_GET['unit_id'] : 0;
+$detailResult = getUnitDetail($unitId);
+$unit = null;
+$videos = [];
+$documents = [];
+$message = '';
+
+if ($detailResult['success']) {
+    $unit = $detailResult['data']['unit'] ?? null;
+    $videos = $detailResult['data']['videos'] ?? [];
+    $documents = $detailResult['data']['documents'] ?? [];
+} else {
+    $message = $detailResult['message'] ?? 'Không thể tải nội dung Unit.';
+}
 ?>
 
+<title>Unit</title>
+<link rel="stylesheet" href="../frontend/assets/css/style.css">
+<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+    
 <section class="oe-container">
+    <?php if (!empty($message)): ?>
+        <p><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
+    <?php elseif ($unit): ?>
+        <h1><?php echo htmlspecialchars($unit['title'], ENT_QUOTES, 'UTF-8'); ?></h1>
+        <p><strong>Khóa học:</strong> <?php echo htmlspecialchars($unit['course_title'], ENT_QUOTES, 'UTF-8'); ?></p>
 
-    <h1>
-        <?php echo htmlspecialchars($unit['course_title']); ?>
-        -
-        <?php echo htmlspecialchars($unit['title']); ?>
-    </h1>
+        <div class="oe-card">
+            <div style="padding: 20px; text-align:left;">
+                <h3>Video bài giảng</h3>
+                <?php if (!empty($videos)): ?>
+                    <?php foreach ($videos as $video): ?>
+                        <p><?php echo htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'); ?></p>
+                        <video controls style="width:100%; max-height:400px;">
+                            <source src="<?php echo htmlspecialchars($video['video_url'], ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ video.
+                        </video>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Chưa có video cho unit này.</p>
+                <?php endif; ?>
+            </div>
+        </div>
 
-    <div class="oe-card">
-
-        <h3>Video bài giảng</h3>
-
-        <video width="100%" controls>
-            <source src="../frontend/upload/video/unit1.mp4" type="video/mp4">
-            Trình duyệt không hỗ trợ video.
-        </video>
-
-    </div>
-
-    <div class="oe-card">
-
-        <h3>Tài liệu PDF</h3>
-
-        <a
-            href="../frontend/upload/pdf/unit1.pdf"
-            target="_blank"
-            class="oe-btn"
-        >
-            Xem tài liệu
-        </a>
-
-    </div>
-
-    <div class="oe-card">
-
-        <h3>Bài kiểm tra</h3>
-
-        <a href="quiz.php?quiz_id=1" class="oe-btn">
-            Làm Quiz
-        </a>
-
-    </div>
-
+        <div class="oe-card">
+            <div style="padding: 20px; text-align:left;">
+                <h3>Tài liệu PDF</h3>
+                <?php if (!empty($documents)): ?>
+                    <?php foreach ($documents as $document): ?>
+                        <p><strong><?php echo htmlspecialchars($document['title'], ENT_QUOTES, 'UTF-8'); ?></strong></p>
+                        <iframe
+                            src="<?php echo htmlspecialchars($document['file_url'], ENT_QUOTES, 'UTF-8'); ?>"
+                            style="width:100%; min-height:700px; border:1px solid #ddd; border-radius:8px;"
+                            title="PDF Viewer"
+                        ></iframe>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Chưa có tài liệu PDF cho unit này.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="oe-card">
+            <p>Không có dữ liệu unit để hiển thị.</p>
+        </div>
+    <?php endif; ?>
 </section>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>

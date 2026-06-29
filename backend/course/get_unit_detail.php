@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../../connectdb/db.php';
 
-header('Content-Type: application/json; charset=utf-8');
 
 /**
  * Lấy chi tiết unit cùng với video và tài liệu
@@ -103,11 +102,16 @@ function getUnitDetail($unitId) {
  * API Endpoint: Lấy chi tiết unit
  * GET: /backend/course/get_unit_detail.php?unit_id=1
  */
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $unitId = $_GET['unit_id'] ?? 0;
-    $result = getUnitDetail($unitId);
-    echo json_encode($result);
-} else {
+if (basename($_SERVER['SCRIPT_FILENAME']) === basename(__FILE__)) {
+    header('Content-Type: application/json; charset=utf-8');
+
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $unitId = $_GET['unit_id'] ?? 0;
+        $result = getUnitDetail($unitId);
+        echo json_encode($result);
+        exit;
+    }
+
     http_response_code(405);
     echo json_encode(['success' => false, 'message' => 'Method không hợp lệ']);
 }
