@@ -3,6 +3,8 @@
 include 'includes/header.php'; 
 ?>
 <link rel="stylesheet" href="../frontend/assets/css/style.css?v=1.2">
+<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+
 
 <div class="fe2-bg-wrapper">
     <form action="../backend/progress/update_progress.php" method="POST" enctype="multipart/form-data" class="profile-container">

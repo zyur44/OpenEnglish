@@ -1,13 +1,11 @@
 <?php
-    //Trang giới thiệu
-   
-    $page_title = "Giới thiệu - Open English";
-
     require __DIR__ . '/includes/header.php';
 ?>
 
 <title>About</title>
-<link rel="stylesheet" href="../frontend/assets/css/style.css"> 
+<link rel="stylesheet" href="../frontend/assets/css/style.css">
+<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+
 
 
     <!-- ================= BANNER TRANG ================= -->

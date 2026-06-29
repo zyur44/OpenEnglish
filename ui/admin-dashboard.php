@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hệ thống Quản trị - OpenEnglish</title>
     <link rel="stylesheet" href="../frontend/assets/css/admin.css?v=1.2">
+    <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 </head>
 <body>
 

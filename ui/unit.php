@@ -37,11 +37,10 @@ if ($detailResult['success']) {
 
         <div class="oe-card">
             <div style="padding: 20px; text-align:left;">
-                <h3>Video bài giảng</h3>
                 <?php if (!empty($videos)): ?>
                     <?php foreach ($videos as $video): ?>
-                        <p><?php echo htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        <video controls style="width:100%; max-height:400px;">
+                        <br>
+                        <video controls style="width:100%; max-height:800px;">
                             <source src="<?php echo htmlspecialchars($video['video_url'], ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
                             Trình duyệt của bạn không hỗ trợ video.
                         </video>
@@ -54,10 +53,10 @@ if ($detailResult['success']) {
 
         <div class="oe-card">
             <div style="padding: 20px; text-align:left;">
-                <h3>Tài liệu PDF</h3>
+                <h3>Tài liệu</h3>
                 <?php if (!empty($documents)): ?>
                     <?php foreach ($documents as $document): ?>
-                        <p><strong><?php echo htmlspecialchars($document['title'], ENT_QUOTES, 'UTF-8'); ?></strong></p>
+                        <br>
                         <iframe
                             src="<?php echo htmlspecialchars($document['file_url'], ENT_QUOTES, 'UTF-8'); ?>"
                             style="width:100%; min-height:700px; border:1px solid #ddd; border-radius:8px;"

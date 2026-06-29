@@ -10,6 +10,7 @@ require __DIR__ . '/includes/header.php';
 <link rel="stylesheet" href="../frontend/assets/css/style.css">
 <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 
+
 <!-- Banner -->
 <section class="oe-hero">
     <div class="oe-container">
