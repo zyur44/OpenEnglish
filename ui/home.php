@@ -13,6 +13,7 @@ require __DIR__ . '/includes/header.php';
 <!-- Banner -->
 <section class="oe-hero">
     <div class="oe-container">
+        <img src="../frontend/assets/image/logo/logo_placeholder.png">
 
         <h1>Học Tiếng Anh Online Miễn Phí</h1>
 

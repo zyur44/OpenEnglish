@@ -13,6 +13,7 @@
     <!-- ================= BANNER TRANG ================= -->
     <section class="oe-page-banner">
         <div class="oe-container">
+            <img src="../frontend/assets/image/logo/logo_placeholder.png">
             <h1>Giới thiệu về Open English</h1>
             <p>Học tiếng Anh online miễn phí &mdash; đơn giản, rõ ràng, hiệu quả.</p>
         </div>
