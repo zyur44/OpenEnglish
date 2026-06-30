@@ -24,10 +24,16 @@ if ($detailResult['success']) {
 }
 ?>
 
-<title>Unit</title>
-<link rel="stylesheet" href="../frontend/assets/css/style.css">
-<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit</title>
+    <link rel="stylesheet" href="../frontend/assets/css/style.css">
+    <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+</head>
+<body>    
 <section class="oe-container">
     <?php if (!empty($message)): ?>
         <p><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
@@ -76,3 +82,5 @@ if ($detailResult['success']) {
 </section>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
+</body>
+</html>

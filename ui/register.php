@@ -3,12 +3,13 @@ $errorMessage = $_GET['error'] ?? '';
 $fullname = htmlspecialchars($_GET['full_name'] ?? '', ENT_QUOTES, 'UTF-8');
 $email = htmlspecialchars($_GET['email'] ?? '', ENT_QUOTES, 'UTF-8');
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký tài khoản - OpenEnglish</title>
+    <title>Đăng ký</title>
     <link rel="stylesheet" href="../frontend/assets/css/admin.css?v=1.2">
 </head>
 <body>
@@ -50,7 +51,5 @@ $email = htmlspecialchars($_GET['email'] ?? '', ENT_QUOTES, 'UTF-8');
         </form>
     </div>
 </div>
-
-<script src="../frontend/asset/js/auth.js"></script>
 </body>
 </html>

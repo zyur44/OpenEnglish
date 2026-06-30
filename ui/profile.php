@@ -25,10 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<link rel="stylesheet" href="../frontend/assets/css/style.css">
-<link rel="stylesheet" href="../frontend/assets/css/admin.css">
-<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../frontend/assets/css/style.css">
+    <link rel="stylesheet" href="../frontend/assets/css/admin.css">
+    <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+</head>
+<body>
 
 <div class="fe2-bg-wrapper">
     <form action="" method="POST" class="profile-container">
@@ -89,3 +96,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     });
 </script>
 <?php include 'includes/footer.php'; ?>
+</body>
+</html>

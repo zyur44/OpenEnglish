@@ -1,13 +1,16 @@
 <?php
     require __DIR__ . '/includes/header.php';
 ?>
-
-<title>About</title>
-<link rel="stylesheet" href="../frontend/assets/css/style.css">
-<link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="../frontend/assets/css/style.css">
+    <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
+</head>
+<body>
     <!-- ================= BANNER TRANG ================= -->
     <section class="oe-page-banner">
         <div class="oe-container">
@@ -95,3 +98,5 @@
     </section>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
+</body>
+</html>
