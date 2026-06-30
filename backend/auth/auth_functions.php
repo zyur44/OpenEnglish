@@ -21,6 +21,39 @@ function getUserByEmail(string $email): ?array
     return $user ?: null;
 }
 
+function getCurrentUserProfile(): ?array
+{
+    ensureSessionStarted();
+
+    if (empty($_SESSION['user_id'])) {
+        return null;
+    }
+
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT id, full_name, email, role_id FROM users WHERE id = ? LIMIT 1");
+    $stmt->execute([(int)$_SESSION['user_id']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user) {
+        return null;
+    }
+
+    $email = $user['email'] ?? '';
+    $username = $email;
+    $atPos = strpos($email, '@');
+
+    if ($atPos !== false) {
+        $username = substr($email, 0, $atPos);
+    } elseif (!empty($user['full_name'])) {
+        $username = trim($user['full_name']);
+    }
+
+    $user['username'] = $username;
+
+    return $user;
+}
+
 function normalizeRoleName(string $roleName): string
 {
     $roleName = strtolower(trim($roleName));

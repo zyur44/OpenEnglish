@@ -1,6 +1,11 @@
 <?php
-// Lệnh include bám sát thư mục ui/includes/
-include 'includes/header.php'; 
+require_once __DIR__ . '/../backend/auth/auth_functions.php';
+include 'includes/header.php';
+
+$profileUser = getCurrentUserProfile();
+$profileFullName = $profileUser['full_name'] ?? '';
+$username = $profileUser['username'] ?? '';
+$email = $profileUser['email'] ?? '';
 ?>
 <link rel="stylesheet" href="../frontend/assets/css/style.css">
 <link rel="stylesheet" href="../frontend/assets/css/admin.css">
@@ -18,17 +23,17 @@ include 'includes/header.php';
             
             <div class="form-group">
                 <label for="fullname">Họ và tên</label>
-                <input type="text" id="fullname" name="fullname" value=""; readonly style="background-color: #ffffff; cursor: default;">
+                <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($profileFullName, ENT_QUOTES, 'UTF-8'); ?>" readonly style="background-color: #ffffff; cursor: default;">
             </div>
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="fullname" name="username" value=""; readonly style="background-color: #ffffff; cursor: default;">
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); ?>" readonly style="background-color: #ffffff; cursor: default;">
             </div>
 
             <div class="form-group">
                 <label for="email">Địa chỉ Email</label>
-                <input type="email" id="email" name="email" value="" readonly style="background-color: #ffffff; cursor: default;">
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>" readonly style="background-color: #ffffff; cursor: default;">
             </div>
 
             <h2>Đổi mật khẩu</h2>
