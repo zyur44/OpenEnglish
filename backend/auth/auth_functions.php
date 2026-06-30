@@ -264,6 +264,35 @@ function changeUserPassword(int $userId, string $currentPassword, string $newPas
     }
 }
 
+function updateUserFullName(int $userId, string $fullName): array
+{
+    $fullName = trim($fullName);
+
+    if ($fullName === '') {
+        return [
+            'status' => 'error',
+            'message' => 'Họ tên không được để trống'
+        ];
+    }
+
+    global $pdo;
+
+    try {
+        $stmt = $pdo->prepare("UPDATE users SET full_name = ?, updated_at = NOW() WHERE id = ?");
+        $stmt->execute([$fullName, $userId]);
+
+        return [
+            'status' => 'success',
+            'message' => 'Cập nhật họ tên thành công'
+        ];
+    } catch (PDOException $e) {
+        return [
+            'status' => 'error',
+            'message' => 'Lỗi cơ sở dữ liệu: ' . $e->getMessage()
+        ];
+    }
+}
+
 function logoutUser(): array
 {
     ensureSessionStarted();
