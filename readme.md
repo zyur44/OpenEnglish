@@ -23,6 +23,7 @@
 * **FR-1.2 (Đăng nhập hệ thống):** Người dùng nhập Email và Mật khẩu. Hệ thống sử dụng cơ chế kiểm tra mã hóa (`password_verify`) để xác thực.
 * **FR-1.3 (Quản lý Phiên đăng nhập):** Khi đăng nhập thành công, hệ thống phải khởi tạo `Session` để lưu giữ thông tin trạng thái: `user_id`, `user_name`, và `user_role` (1: Admin, 2: Student).
 * **FR-1.4 (Chốt chặn bảo mật - Middleware):** Tất cả các API hoặc trang web nhạy cảm phải cấu hình kiểm tra điều kiện bảo mật. Từ chối và trả về mã lỗi thích hợp (`401 Chưa đăng nhập`, `403 Không có quyền`, `405 Sai phương thức HTTP`) nếu vi phạm.
+* **FR-1.5 (Cập nhật tên và mật khẩu):** Người dùng có thể cập nhật thông tin họ và tên, mật khẩu (Mật khẩu vẫn được mã hóa trên Database)
 
 ### 2. Module Quản lý của Admin (Admin Dashboard)
 * **FR-2.1 (Xem danh sách người dùng):** Giao diện Admin cho phép hiển thị danh sách tất cả các tài khoản đang tồn tại trong hệ thống.

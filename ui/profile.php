@@ -2,23 +2,15 @@
 // Lệnh include bám sát thư mục ui/includes/
 include 'includes/header.php'; 
 ?>
-<link rel="stylesheet" href="../frontend/assets/css/style.css?v=1.2">
+<link rel="stylesheet" href="../frontend/assets/css/style.css">
+<link rel="stylesheet" href="../frontend/assets/css/admin.css">
 <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 
 
 <div class="fe2-bg-wrapper">
-    <form action="../backend/progress/update_progress.php" method="POST" enctype="multipart/form-data" class="profile-container">
+    <form action="" class="profile-container">
         
         <div class="profile-sidebar">
-            <div class="avatar-wrapper">
-                <img src="../frontend/asset/image/logo/logo_placeholder.png" alt="Avatar" class="avatar" id="avatar-preview">
-                
-                <label for="avatar-upload" class="btn-upload-avatar">📷 Đổi ảnh</label>
-                <input type="file" id="avatar-upload" name="avatar_file" accept="image/*" style="display: none;">
-            </div>
-
-            <h3>Nguyễn Tuấn Anh</h3>
-            <p>Học viên OpenEnglish</p>
         </div>
         
         <div class="profile-content">
@@ -26,17 +18,23 @@ include 'includes/header.php';
             
             <div class="form-group">
                 <label for="fullname">Họ và tên</label>
-                <input type="text" id="fullname" name="fullname" value="Nguyễn Tuấn Anh">
+                <input type="text" id="fullname" name="fullname" value=""; readonly style="background-color: #ffffff; cursor: default;">
             </div>
 
             <div class="form-group">
-                <label for="email">Địa chỉ Email (Không thể sửa)</label>
-                <input type="email" id="email" name="email" value="tuananh@gmail.com" readonly style="background-color: #e5e7eb; cursor: not-allowed;">
+                <label for="username">Username</label>
+                <input type="text" id="fullname" name="username" value=""; readonly style="background-color: #ffffff; cursor: default;">
             </div>
 
             <div class="form-group">
-                <label for="old_password">Mật khẩu hiện tại (Nếu muốn đổi)</label>
-                <input type="password" id="old_password" name="old_password" placeholder="••••••••">
+                <label for="email">Địa chỉ Email</label>
+                <input type="email" id="email" name="email" value="" readonly style="background-color: #ffffff; cursor: default;">
+            </div>
+
+            <h2>Đổi mật khẩu</h2>
+            <div class="form-group">
+                <label for="old_password">Mật khẩu hiện tại</label>
+                <input type="password" id="old_password" name="old_password" placeholder="">
             </div>
 
             <div class="form-group">

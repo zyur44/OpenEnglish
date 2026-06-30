@@ -26,7 +26,6 @@ body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: var(--text-main);
     line-height: 1.5;
-    background-color: var(--bg-color);
 }
 
 /* 2. GIAO DIỆN XÁC THỰC  */
@@ -37,8 +36,10 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    
     min-height: 100vh;
+    width: 800px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,23 +120,23 @@ body {
 /* 3. GIAO DIỆN PROFILE */
 .profile-container {
     display: flex;
-    max-width: 1000px;
-    margin: 0;
-    background-color: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     overflow: hidden;
+
 }
 
 .profile-sidebar {
     flex: 1;
-    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    background-color: rgb(130, 171, 233);
     color: var(--white);
     padding: 40px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .profile-sidebar .avatar {
