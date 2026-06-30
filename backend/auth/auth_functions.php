@@ -210,6 +210,60 @@ function getSessionStatus(): array
     ];
 }
 
+function changeUserPassword(int $userId, string $currentPassword, string $newPassword): array
+{
+    if (trim($currentPassword) === '' || trim($newPassword) === '') {
+        return [
+            'status' => 'error',
+            'message' => 'Vui lòng nhập mật khẩu hiện tại và mật khẩu mới'
+        ];
+    }
+
+    if (strlen($newPassword) < 8) {
+        return [
+            'status' => 'error',
+            'message' => 'Mật khẩu mới tối thiểu 8 ký tự'
+        ];
+    }
+
+    if (!preg_match('/[A-Z]/', $newPassword) || !preg_match('/[0-9]/', $newPassword)) {
+        return [
+            'status' => 'error',
+            'message' => 'Mật khẩu mới cần có chữ hoa và số'
+        ];
+    }
+
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT password_hash FROM users WHERE id = ? LIMIT 1");
+    $stmt->execute([$userId]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user || empty($user['password_hash']) || !password_verify($currentPassword, $user['password_hash'])) {
+        return [
+            'status' => 'error',
+            'message' => 'Mật khẩu hiện tại không đúng'
+        ];
+    }
+
+    $newHash = password_hash($newPassword, PASSWORD_DEFAULT);
+
+    try {
+        $stmt = $pdo->prepare("UPDATE users SET password_hash = ?, updated_at = NOW() WHERE id = ?");
+        $stmt->execute([$newHash, $userId]);
+
+        return [
+            'status' => 'success',
+            'message' => 'Đổi mật khẩu thành công'
+        ];
+    } catch (PDOException $e) {
+        return [
+            'status' => 'error',
+            'message' => 'Lỗi cơ sở dữ liệu: ' . $e->getMessage()
+        ];
+    }
+}
+
 function logoutUser(): array
 {
     ensureSessionStarted();

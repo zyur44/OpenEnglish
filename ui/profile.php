@@ -6,6 +6,24 @@ $profileUser = getCurrentUserProfile();
 $profileFullName = $profileUser['full_name'] ?? '';
 $username = $profileUser['username'] ?? '';
 $email = $profileUser['email'] ?? '';
+
+$message = '';
+$messageType = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userId = (int)($_SESSION['user_id'] ?? 0);
+    $currentPassword = $_POST['old_password'] ?? '';
+    $newPassword = $_POST['new_password'] ?? '';
+
+    if ($userId > 0) {
+        $result = changeUserPassword($userId, $currentPassword, $newPassword);
+        $message = $result['message'];
+        $messageType = $result['status'] === 'success' ? 'success' : 'error';
+    } else {
+        $message = 'Vui lòng đăng nhập trước';
+        $messageType = 'error';
+    }
+}
 ?>
 <link rel="stylesheet" href="../frontend/assets/css/style.css">
 <link rel="stylesheet" href="../frontend/assets/css/admin.css">
@@ -13,7 +31,7 @@ $email = $profileUser['email'] ?? '';
 
 
 <div class="fe2-bg-wrapper">
-    <form action="" class="profile-container">
+    <form action="" method="POST" class="profile-container">
         
         <div class="profile-sidebar">
         </div>
@@ -39,7 +57,7 @@ $email = $profileUser['email'] ?? '';
             <h2>Đổi mật khẩu</h2>
             <div class="form-group">
                 <label for="old_password">Mật khẩu hiện tại</label>
-                <input type="password" id="old_password" name="old_password" placeholder="">
+                <input type="password" id="old_password" name="old_password" placeholder="Nhập mật khẩu hiện tại">
             </div>
 
             <div class="form-group">
@@ -48,6 +66,12 @@ $email = $profileUser['email'] ?? '';
             </div>
 
             <button type="submit" class="btn-primary" style="width: auto; padding: 12px 24px;">Lưu thay đổi</button>
+
+            <?php if (!empty($message)): ?>
+                <div class="auth-<?php echo $messageType === 'success' ? 'success' : 'error'; ?>" style="background: <?php echo $messageType === 'success' ? '#e6ffeb' : '#ffe6e6'; ?>; border: 1px solid <?php echo $messageType === 'success' ? '#88d18f' : '#ffb3b3'; ?>; padding: 10px; margin: 10px 0; border-radius: 4px; color: <?php echo $messageType === 'success' ? '#1a641a' : '#800'; ?>;">
+                    <?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>
+                </div>
+            <?php endif; ?>            
         </div>
     </form>
 </div>
