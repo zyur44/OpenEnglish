@@ -50,8 +50,12 @@ function updateUser($userId, $data) {
         }
     }
     
-    if (isset($data['role_id']) && !in_array($data['role_id'], [1, 2]))
+    if (isset($data['role_id']) && !in_array((int)$data['role_id'], [1, 2]))
         $errors['role_id'] = 'Role không hợp lệ (1=Admin, 2=Student)';
+
+    if (isset($data['password']) && $data['password'] !== '' && strlen($data['password']) < 8) {
+        $errors['password'] = 'Mật khẩu tối thiểu 8 ký tự';
+    }
     
     if (!empty($errors)) {
         return [
@@ -72,6 +76,11 @@ function updateUser($userId, $data) {
                 $setClauses[] = "{$field} = ?";
                 $params[] = $data[$field];
             }
+        }
+
+        if (isset($data['password']) && $data['password'] !== '') {
+            $setClauses[] = 'password_hash = ?';
+            $params[] = password_hash($data['password'], PASSWORD_DEFAULT);
         }
         
         if (empty($setClauses)) {
@@ -118,12 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_SESSION['user_id'])) {
         http_response_code(401);
         echo json_encode(['success' => false, 'message' => 'Chưa đăng nhập']);
-        exit;
-    }
-    
-    if ($_SESSION['role'] !== 'Admin') {
-        http_response_code(403);
-        echo json_encode(['success' => false, 'message' => 'Không có quyền']);
         exit;
     }
     

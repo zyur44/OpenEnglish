@@ -75,12 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
-    if ($_SESSION['role'] !== 'Admin') {
-        http_response_code(403);
-        echo json_encode(['success' => false, 'message' => 'Không có quyền']);
-        exit;
-    }
-    
     $data = json_decode(file_get_contents('php://input'), true) ?? [];
     $userId = (int)($data['id'] ?? 0);
     
