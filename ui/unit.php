@@ -60,6 +60,9 @@ if ($detailResult['success']) {
 
         <div class="oe-card">
             <div style="padding: 20px; text-align:left;">
+                <?php $courseLink = 'course.php?course_id=' . (int)($unit['course_id'] ?? 0); ?>
+                <a href="<?php echo htmlspecialchars($courseLink, ENT_QUOTES, 'UTF-8'); ?>" class="oe-btn oe-btn-secondary">← Quay lại khóa học</a>
+                <div></div>
                 <?php if (!empty($videos)): ?>
                     <?php foreach ($videos as $video): ?>
                         <br>

@@ -57,6 +57,8 @@ if ($detailResult['success']) {
             <p><?php echo htmlspecialchars($course['description'], ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
 
+        <?php $courseLink = 'my-courses.php'; ?>
+        <a href="<?php echo htmlspecialchars($courseLink, ENT_QUOTES, 'UTF-8'); ?>" class="oe-btn oe-btn-secondary">← Quay lại khóa học của tôi</a>
         <h2>Danh sách Unit</h2>
         <div class="oe-unit-grid">
             <?php if (!empty($units)): ?>
