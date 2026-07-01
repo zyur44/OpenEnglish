@@ -24,6 +24,16 @@ section {
     margin-bottom: 30px;
 }
 
+.oe-hero img,
+.oe-page-banner img {
+    max-width: 100%;
+    height: auto;
+    max-height: 800px;
+    width: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+
 
 nav{
     background-color: rgb(130, 171, 233);
