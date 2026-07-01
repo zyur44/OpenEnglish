@@ -2,6 +2,15 @@
 // Trang xem video bài giảng, tài liệu và quiz
 
 require __DIR__ . '/../connectdb/db.php';
+require_once __DIR__ . '/../backend/auth/auth_functions.php';
+
+ensureSessionStarted();
+$sessionStatus = getSessionStatus();
+if (($sessionStatus['status'] ?? 'error') !== 'success') {
+    header('Location: login.php?error=' . urlencode('Bạn cần đăng nhập để truy cập unit này.'));
+    exit;
+}
+
 require __DIR__ . '/includes/header.php';
 
 if (!function_exists('getUnitDetail')) {

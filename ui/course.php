@@ -1,10 +1,17 @@
 <?php
 require __DIR__ . '/../connectdb/db.php';
+require_once __DIR__ . '/../backend/auth/auth_functions.php';
 require __DIR__ . '/includes/header.php';
 
 if (!function_exists('getCourseDetail')) {
     require_once __DIR__ . '/../backend/course/get_course_detail.php';
 }
+
+ensureSessionStarted();
+$sessionStatus = getSessionStatus();
+$isLoggedIn = ($sessionStatus['status'] ?? 'error') === 'success';
+$loginMessage = 'Bạn cần phải đăng nhập để có thể tiếp tục học.';
+$loginRedirectUrl = 'login.php?error=' . urlencode($loginMessage);
 
 $courseId = isset($_GET['course_id']) ? (int)$_GET['course_id'] : 0;
 $detailResult = getCourseDetail($courseId);
@@ -42,14 +49,28 @@ if ($detailResult['success']) {
         <div class="oe-unit-grid">
             <?php if (!empty($units)): ?>
                 <?php foreach ($units as $unit): ?>
-                    <a href="unit.php?unit_id=<?php echo (int)$unit['id']; ?>" style="text-decoration:none; color:inherit;">
-                        <div class="oe-card oe-unit-card">
-                            <div style="padding: 20px; text-align:left;">
-                                <h3><?php echo htmlspecialchars($unit['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                                <p>Unit số <?php echo (int)$unit['order_index']; ?></p>
+                    <?php $unitUrl = 'unit.php?unit_id=' . (int)$unit['id']; ?>
+                    <?php if ($isLoggedIn): ?>
+                        <a href="<?php echo htmlspecialchars($unitUrl, ENT_QUOTES, 'UTF-8'); ?>" style="text-decoration:none; color:inherit;">
+                            <div class="oe-card oe-unit-card">
+                                <div style="padding: 20px; text-align:left;">
+                                    <h3><?php echo htmlspecialchars($unit['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <p>Unit số <?php echo (int)$unit['order_index']; ?></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php echo htmlspecialchars($loginRedirectUrl, ENT_QUOTES, 'UTF-8'); ?>"
+                           onclick="event.preventDefault(); alert('<?php echo htmlspecialchars($loginMessage, ENT_QUOTES, 'UTF-8'); ?>'); window.location.href = this.href;"
+                           style="text-decoration:none; color:inherit;">
+                            <div class="oe-card oe-unit-card">
+                                <div style="padding: 20px; text-align:left;">
+                                    <h3><?php echo htmlspecialchars($unit['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <p>Unit số <?php echo (int)$unit['order_index']; ?></p>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="oe-card">
