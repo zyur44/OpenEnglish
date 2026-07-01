@@ -1,4 +1,5 @@
 <?php
+// ===== Trang làm bài kiểm tra cho từng unit =====
 require __DIR__.'/../connectdb/db.php';
 require __DIR__.'/includes/header.php';
 
@@ -71,6 +72,7 @@ $quizTitle = $quiz['title'] ?? 'Bài tập';
     <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 </head>
 <body>
+<!-- ===== Nội dung bài kiểm tra ===== -->
 <section class="oe-container">
     <div class="quiz-shell">
         <?php if ($unitId > 0): ?>
@@ -79,6 +81,7 @@ $quizTitle = $quiz['title'] ?? 'Bài tập';
             </div>
         <?php endif; ?>
 
+        <!-- ===== Tiêu đề và tiến độ bài làm ===== -->
         <h1><?php echo htmlspecialchars($quizTitle, ENT_QUOTES, 'UTF-8'); ?></h1>
         <p class="quiz-progress" id="quiz-progress">0/<?php echo $totalQuestions; ?></p>
 
@@ -89,6 +92,7 @@ $quizTitle = $quiz['title'] ?? 'Bài tập';
         <?php endif; ?>
 
         <?php if ($totalQuestions > 0 && empty($submissionResult) && empty($submissionMessage)): ?>
+            <!-- ===== Form trả lời câu hỏi ===== -->
             <form method="post" action="">
                 <input type="hidden" name="quiz_id" value="<?php echo (int)$quizId; ?>">
                 <input type="hidden" name="userId" value="<?php echo (int)$userId; ?>">
@@ -122,6 +126,7 @@ $quizTitle = $quiz['title'] ?? 'Bài tập';
         <?php endif; ?>
 
         <?php if ($submissionResult): ?>
+            <!-- ===== Khu vực hiển thị kết quả bài làm ===== -->
             <?php
                 $resultMessage = $submissionResult['message'] ?? 'Đã hoàn thành bài làm.';
                 $resultData = $submissionResult['data'] ?? [];

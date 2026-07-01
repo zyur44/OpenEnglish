@@ -1,4 +1,5 @@
 
+<!-- ===== Trang đăng nhập người dùng ===== -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -11,6 +12,7 @@
 <body>
 
 <div class="fe2-bg-wrapper">
+    <!-- ===== Khung đăng nhập ===== -->
     <div class="auth-box">
         <h2>OpenEnglish</h2>
         <p class="subtitle">Đăng nhập để tiếp tục học tập</p>
@@ -21,6 +23,7 @@
             <div class="auth-error" style="background:#ffe6e6;border:1px solid #ffb3b3;padding:10px;margin:10px 0;border-radius:4px;color:#800;"><?php echo htmlspecialchars($_GET['error'], ENT_QUOTES, 'UTF-8'); ?></div>
         <?php endif; ?>
 
+        <!-- ===== Form đăng nhập ===== -->
         <form action="../backend/auth/login_process.php" method="POST">
             <div class="form-group">
                 <label for="email">Email</label>

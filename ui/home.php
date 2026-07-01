@@ -1,5 +1,5 @@
 <?php
-// Trang màn hình chính
+// ===== Trang chủ của hệ thống OpenEnglish =====
 require __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ require __DIR__ . '/includes/header.php';
 </head>
 <body>
 
-<!-- Banner -->
+<!-- ===== Banner chào mừng ===== -->
 <section class="oe-hero">
     <div class="oe-container">
     <img src="../frontend/assets/image/logo/logo_placeholder.png">
@@ -28,7 +28,7 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Giới thiệu -->
+<!-- ===== Phần giới thiệu về OpenEnglish ===== -->
 <section class="oe-container">
 
     <h2>Giới thiệu OpenEnglish</h2>
@@ -41,7 +41,7 @@ require __DIR__ . '/includes/header.php';
 
 </section>
 
-<!-- Tính năng -->
+<!-- ===== Phần các tính năng nổi bật ===== -->
 <section class="oe-container">
 
     <h2>Tính năng nổi bật</h2>

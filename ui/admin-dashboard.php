@@ -1,4 +1,5 @@
 <?php
+// ===== Trang quản trị dành cho admin =====
 require_once __DIR__ . '/../connectdb/db.php';
 require_once __DIR__ . '/../backend/auth/auth_functions.php';
 
@@ -42,6 +43,7 @@ if (!$sessionStatus['is_admin']) {
 <body>
 
 <div class="admin-container">
+    <!-- ===== Thanh điều hướng quản trị ===== -->
     <aside class="admin-sidebar">
         <div class="admin-brand">OpenEnglish Admin</div>
         <ul class="admin-menu">
@@ -51,10 +53,12 @@ if (!$sessionStatus['is_admin']) {
     </aside>
 
     <main class="admin-main">
+        <!-- ===== Thanh tiêu đề nội dung quản trị ===== -->
         <nav class="admin-nav">
             <div class="nav-title">Danh sách người dùng hệ thống</div>
         </nav>
 
+        <!-- ===== Nội dung chính của trang quản trị ===== -->
         <div class="admin-content">
             <?php if ($accessDenied): ?>
                 <div class="access-denied-box">
@@ -194,6 +198,7 @@ if (!$sessionStatus['is_admin']) {
 </div>
 
 <script>
+// ===== Xử lý modal thêm và chỉnh sửa người dùng =====
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('createUserModal');
     const openButton = document.getElementById('openCreateUserModal');

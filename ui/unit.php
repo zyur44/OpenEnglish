@@ -1,5 +1,5 @@
 <?php
-// Trang xem video bài giảng, tài liệu và quiz
+// ===== Trang xem video bài giảng, tài liệu và bài kiểm tra của unit =====
 
 require __DIR__ . '/../connectdb/db.php';
 require_once __DIR__ . '/../backend/auth/auth_functions.php';
@@ -50,7 +50,8 @@ if ($detailResult['success']) {
     <link rel="stylesheet" href="../frontend/assets/css/style.css">
     <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 </head>
-<body>    
+<body>
+<!-- ===== Nội dung unit ===== -->
 <section class="oe-container">
     <?php if (!empty($message)): ?>
         <p><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
@@ -83,6 +84,7 @@ if ($detailResult['success']) {
             </div>
         </div>
 
+        <!-- ===== Phần tài liệu và bài tập ===== -->
         <div class="oe-card">
             <div style="padding: 20px; text-align:left;">
                 <h3>Tài liệu</h3>
@@ -116,6 +118,8 @@ if ($detailResult['success']) {
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
 <script>
+// ===== Theo dõi tiến độ xem video =====
+
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.oe-unit-video').forEach(function (video) {
         const videoId = video.getAttribute('data-video-id');

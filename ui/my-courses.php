@@ -1,5 +1,5 @@
 <?php
-// Trang khóa học của tôi
+// ===== Trang hiển thị danh sách khóa học của người dùng =====
 
 if (!function_exists('getCourses')) {
     require_once __DIR__ . '/../backend/course/get_courses.php';
@@ -49,8 +49,10 @@ if ($result['success']) {
 <body>
 <?php require __DIR__ . '/includes/header.php'; ?>
 
+<!-- ===== Nội dung khóa học của tôi ===== -->
 <section class="oe-container">
 
+    <!-- ===== Tiêu đề và mô tả trang ===== -->
     <h1>Khóa học của tôi</h1>
 
     <p>
@@ -61,6 +63,7 @@ if ($result['success']) {
         <p><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
     <?php endif; ?>
 
+    <!-- ===== Lưới hiển thị các khóa học ===== -->
     <div class="oe-grid">
         <?php if (!empty($courses)): ?>
             <?php foreach ($courses as $course): ?>

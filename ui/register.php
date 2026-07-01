@@ -1,4 +1,5 @@
 <?php
+// ===== Khởi tạo dữ liệu hiển thị cho trang đăng ký =====
 $errorMessage = $_GET['error'] ?? '';
 $fullname = htmlspecialchars($_GET['full_name'] ?? '', ENT_QUOTES, 'UTF-8');
 $email = htmlspecialchars($_GET['email'] ?? '', ENT_QUOTES, 'UTF-8');
@@ -15,6 +16,7 @@ $email = htmlspecialchars($_GET['email'] ?? '', ENT_QUOTES, 'UTF-8');
 <body>
 
 <div class="fe2-bg-wrapper">
+    <!-- ===== Khung đăng ký tài khoản ===== -->
     <div class="auth-box" style="max-width: 480px;">
         <h2>OpenEnglish</h2>
         <p class="subtitle">Tạo tài khoản học tập miễn phí ngay</p>
@@ -22,6 +24,7 @@ $email = htmlspecialchars($_GET['email'] ?? '', ENT_QUOTES, 'UTF-8');
             <div class="auth-error" style="background:#ffe6e6;border:1px solid #ffb3b3;padding:10px;margin:10px 0;border-radius:4px;color:#800;"><?php echo $errorMessage; ?></div>
         <?php endif; ?>
 
+        <!-- ===== Form đăng ký ===== -->
         <form action="../backend/auth/register_process.php" method="POST">
             <div class="form-group">
                 <label for="fullname">Họ và tên</label>

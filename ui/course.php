@@ -1,4 +1,5 @@
 <?php
+// ===== Nạp dữ liệu khóa học và trạng thái người dùng =====
 require __DIR__ . '/../connectdb/db.php';
 require_once __DIR__ . '/../backend/auth/auth_functions.php';
 require __DIR__ . '/includes/header.php';
@@ -47,17 +48,21 @@ if ($detailResult['success']) {
     <link rel="stylesheet" href="../frontend/assets/css/style.css">
     <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 </head>
-<body>    
+<body>
+<!-- ===== Nội dung chi tiết khóa học ===== -->
 <section class="oe-container">
     <?php if (!empty($message)): ?>
+        <!-- ===== Thông báo lỗi khi không tải được khóa học ===== -->
         <p><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
     <?php elseif ($course): ?>
+        <!-- ===== Banner thông tin khóa học ===== -->
         <div class="oe-course-banner">
             <h1><?php echo htmlspecialchars($course['title'], ENT_QUOTES, 'UTF-8'); ?></h1>
             <p><?php echo htmlspecialchars($course['description'], ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
 
         <?php $courseLink = 'my-courses.php'; ?>
+        <!-- ===== Nút quay lại danh sách khóa học ===== -->
         <a href="<?php echo htmlspecialchars($courseLink, ENT_QUOTES, 'UTF-8'); ?>" class="oe-btn oe-btn-secondary">← Quay lại khóa học của tôi</a>
         <h2>Danh sách Unit</h2>
         <div class="oe-unit-grid">

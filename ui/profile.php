@@ -1,4 +1,5 @@
 <?php
+// ===== Quản lý thông tin cá nhân và đổi mật khẩu =====
 require_once __DIR__ . '/../backend/auth/auth_functions.php';
 
 $message = '';
@@ -54,12 +55,14 @@ include 'includes/header.php';
 <body>
 
 <div class="fe2-bg-wrapper">
+    <!-- ===== Khung thông tin hồ sơ người dùng ===== -->
     <form action="" method="POST" class="profile-container">
         
         <div class="profile-sidebar">
         </div>
         
         <div class="profile-content">
+            <!-- ===== Thông tin tài khoản ===== -->
             <h2>Thông tin tài khoản</h2>
 
             <form id="fullname-form" method="POST" style="margin-bottom: 20px;">
@@ -80,6 +83,7 @@ include 'includes/header.php';
                 <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>" readonly style="background-color: #ffffff; cursor: default;">
             </div>
 
+            <!-- ===== Form đổi mật khẩu ===== -->
             <form method="POST" style="margin-top: 20px;">
                 <h2>Đổi mật khẩu</h2>
                 <div class="form-group">
@@ -105,6 +109,7 @@ include 'includes/header.php';
 </div>
 
 <script>
+    // ===== Chế độ chỉnh sửa họ tên trên giao diện =====
     const fullNameInput = document.getElementById('fullname');
     const editBtn = document.getElementById('edit-fullname-btn');
     const saveBtn = document.getElementById('save-fullname-btn');

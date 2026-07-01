@@ -8,6 +8,7 @@
     $isAdmin = $isLoggedIn && isset($_SESSION['role']) && strtolower((string)$_SESSION['role']) === 'admin';
     ?>
 
+    <!-- ===== Thanh điều hướng chung của website ===== -->
     <header>
         <nav>
             <ul>

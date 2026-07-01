@@ -1,4 +1,5 @@
 <?php
+    // ===== Nạp header cho toàn bộ trang giới thiệu =====
     require __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
     <link rel="icon" href="../frontend/assets/image/logo/logo_placeholder.png">
 </head>
 <body>
-    <!-- ================= BANNER TRANG ================= -->
+    <!-- ===== Banner trang giới thiệu ===== -->
     <section class="oe-page-banner">
         <div class="oe-container">
             <img src="../frontend/assets/image/logo/logo_placeholder.png">
@@ -20,7 +21,7 @@
         </div>
     </section>
 
-    <!-- ================= TỔNG QUAN ================= -->
+    <!-- ===== Phần tổng quan về OpenEnglish ===== -->
     <section class="oe-section">
         <div class="oe-container oe-about-intro">
             <h2>OpenEnglish là gì?</h2>
@@ -37,7 +38,7 @@
         </div>
     </section>
 
-    <!-- ================= TẦM NHÌN / SỨ MỆNH / GIÁ TRỊ ================= -->
+    <!-- ===== Phần tầm nhìn, sứ mệnh và giá trị cốt lõi ===== -->
     <section class="oe-section oe-section-alt">
         <div class="oe-container">
             <div class="oe-about-grid">
@@ -60,7 +61,7 @@
         </div>
     </section>
 
-    <!-- ================= QUY TRÌNH HỌC ================= -->
+    <!-- ===== Phần quy trình học tập với 3 bước ===== -->
     <section class="oe-section">
         <div class="oe-container">
             <div class="oe-section-head">
@@ -88,7 +89,7 @@
         </div>
     </section>
 
-    <!-- ================= CALL TO ACTION ================= -->
+    <!-- ===== Khu vực gọi hành động đăng ký ===== -->
     <section class="oe-cta">
         <div class="oe-container oe-cta-inner">
             <h2>Bắt đầu hành trình học tiếng Anh của bạn</h2>
