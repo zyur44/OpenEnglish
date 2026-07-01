@@ -14,11 +14,19 @@ $unit = null;
 $videos = [];
 $documents = [];
 $message = '';
+$quizId = 0;
 
 if ($detailResult['success']) {
     $unit = $detailResult['data']['unit'] ?? null;
     $videos = $detailResult['data']['videos'] ?? [];
     $documents = $detailResult['data']['documents'] ?? [];
+
+    if ($unitId > 0) {
+        $quizStmt = $pdo->prepare("SELECT id FROM quizzes WHERE unit_id = ? LIMIT 1");
+        $quizStmt->execute([$unitId]);
+        $quizRow = $quizStmt->fetch(PDO::FETCH_ASSOC);
+        $quizId = (int)($quizRow['id'] ?? 0);
+    }
 } else {
     $message = $detailResult['message'] ?? 'Không thể tải nội dung Unit.';
 }
@@ -72,6 +80,12 @@ if ($detailResult['success']) {
                 <?php else: ?>
                     <p>Chưa có tài liệu PDF cho unit này.</p>
                 <?php endif; ?>
+
+                <div style="margin-top: 20px;">
+                    <?php if ($quizId > 0): ?>
+                        <a href="quiz.php?quiz_id=<?php echo (int)$quizId; ?>" class="oe-btn">Làm bài tập</a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     <?php else: ?>
