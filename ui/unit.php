@@ -63,7 +63,13 @@ if ($detailResult['success']) {
                 <?php if (!empty($videos)): ?>
                     <?php foreach ($videos as $video): ?>
                         <br>
-                        <video controls style="width:100%; max-height:800px;">
+                        <video
+                            controls
+                            style="width:100%; max-height:800px;"
+                            class="oe-unit-video"
+                            data-video-id="<?php echo (int)($video['id'] ?? 0); ?>"
+                            data-user-id="<?php echo (int)($sessionStatus['user_id'] ?? 0); ?>"
+                        >
                             <source src="<?php echo htmlspecialchars($video['video_url'], ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
                             Trình duyệt của bạn không hỗ trợ video.
                         </video>
@@ -106,5 +112,43 @@ if ($detailResult['success']) {
 </section>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.oe-unit-video').forEach(function (video) {
+        const videoId = video.getAttribute('data-video-id');
+        const userId = video.getAttribute('data-user-id');
+
+        if (!videoId || !userId) {
+            return;
+        }
+
+        let watchedMarked = false;
+
+        const markVideoWatched = function () {
+            if (watchedMarked) {
+                return;
+            }
+
+            watchedMarked = true;
+
+            fetch('../backend/progress/update_progress.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userId: Number(userId),
+                    videoId: Number(videoId)
+                })
+            }).catch(function () {});
+        };
+
+        video.addEventListener('ended', markVideoWatched);
+        video.addEventListener('timeupdate', function () {
+            if (video.duration && video.currentTime >= video.duration - 1) {
+                markVideoWatched();
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

@@ -7,6 +7,8 @@ if (!function_exists('getCourseDetail')) {
     require_once __DIR__ . '/../backend/course/get_course_detail.php';
 }
 
+require_once __DIR__ . '/../backend/progress/update_progress.php';
+
 ensureSessionStarted();
 $sessionStatus = getSessionStatus();
 $isLoggedIn = ($sessionStatus['status'] ?? 'error') === 'success';
@@ -18,10 +20,20 @@ $detailResult = getCourseDetail($courseId);
 $course = null;
 $units = [];
 $message = '';
+$unitProgressMap = [];
 
 if ($detailResult['success']) {
     $course = $detailResult['data']['course'] ?? null;
     $units = $detailResult['data']['units'] ?? [];
+
+    if ($isLoggedIn && $courseId > 0) {
+        $progressResult = getCourseProgressDetails((int)($sessionStatus['user_id'] ?? 0), $courseId);
+        if ($progressResult['status'] && !empty($progressResult['data']['unitDetails'])) {
+            foreach ($progressResult['data']['unitDetails'] as $progressDetail) {
+                $unitProgressMap[(int)$progressDetail['unitId']] = (float)$progressDetail['progress'];
+            }
+        }
+    }
 } else {
     $message = $detailResult['message'] ?? 'Không thể tải thông tin khóa học.';
 }
@@ -50,12 +62,23 @@ if ($detailResult['success']) {
             <?php if (!empty($units)): ?>
                 <?php foreach ($units as $unit): ?>
                     <?php $unitUrl = 'unit.php?unit_id=' . (int)$unit['id']; ?>
+                    <?php $unitProgress = $unitProgressMap[(int)$unit['id']] ?? 0; ?>
+                    <?php $unitProgress = max(0, min(100, (float)$unitProgress)); ?>
                     <?php if ($isLoggedIn): ?>
                         <a href="<?php echo htmlspecialchars($unitUrl, ENT_QUOTES, 'UTF-8'); ?>" style="text-decoration:none; color:inherit;">
                             <div class="oe-card oe-unit-card">
-                                <div style="padding: 20px; text-align:left;">
+                                <div class="oe-unit-card-content" style="padding: 20px; text-align:left;">
                                     <h3><?php echo htmlspecialchars($unit['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
                                     <p>Unit số <?php echo (int)$unit['order_index']; ?></p>
+                                </div>
+                                <div class="oe-unit-card-footer">
+                                    <div class="oe-unit-progress-meta">
+                                        <span>Tiến độ</span>
+                                        <span><?php echo (int)$unitProgress; ?>%</span>
+                                    </div>
+                                    <div class="oe-progress-track" aria-label="Tiến độ unit">
+                                        <div class="oe-progress-fill" style="width: <?php echo (int)$unitProgress; ?>%;"></div>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -64,9 +87,18 @@ if ($detailResult['success']) {
                            onclick="event.preventDefault(); alert('<?php echo htmlspecialchars($loginMessage, ENT_QUOTES, 'UTF-8'); ?>'); window.location.href = this.href;"
                            style="text-decoration:none; color:inherit;">
                             <div class="oe-card oe-unit-card">
-                                <div style="padding: 20px; text-align:left;">
+                                <div class="oe-unit-card-content" style="padding: 20px; text-align:left;">
                                     <h3><?php echo htmlspecialchars($unit['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
                                     <p>Unit số <?php echo (int)$unit['order_index']; ?></p>
+                                </div>
+                                <div class="oe-unit-card-footer">
+                                    <div class="oe-unit-progress-meta">
+                                        <span>Tiến độ</span>
+                                        <span><?php echo (int)$unitProgress; ?>%</span>
+                                    </div>
+                                    <div class="oe-progress-track" aria-label="Tiến độ unit">
+                                        <div class="oe-progress-fill" style="width: <?php echo (int)$unitProgress; ?>%;"></div>
+                                    </div>
                                 </div>
                             </div>
                         </a>
