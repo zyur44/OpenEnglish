@@ -71,8 +71,7 @@ OpenEnglish/
 │
 ├── frontend/                     # TÀI NGUYÊN TĨNH FRONTEND (Các FE làm việc ở đây)
 │   ├── assets/
-│   │   ├── css/                  # style.css, admin.css, course.css
-│   │   └── js/                   # main.js, auth.js, quiz.js
+│   │   ├── css/                  # style.css, admin.css
 │   └── uploads/                  # Nơi chứa tài liệu PDF, video bài giảng tải lên
 │
 ├── ui/                           # CÁC TRANG GIAO DIỆN CHÍNH (Đuôi .php để đổ dữ liệu)
