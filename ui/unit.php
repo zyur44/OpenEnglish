@@ -82,8 +82,9 @@ if ($detailResult['success']) {
                 <?php endif; ?>
 
                 <div style="margin-top: 20px;">
-                    <?php if ($quizId > 0): ?>
-                        <a href="quiz.php?quiz_id=<?php echo (int)$quizId; ?>" class="oe-btn">Làm bài tập</a>
+                    <?php if ($unitId > 0 && $quizId > 0): ?>
+                        <?php $quizLink = 'quiz.php?unit_id=' . (int)$unitId . '&quiz_id=' . (int)$quizId; ?>
+                        <a href="<?php echo htmlspecialchars($quizLink, ENT_QUOTES, 'UTF-8'); ?>" class="oe-btn">Làm bài tập</a>
                     <?php endif; ?>
                 </div>
             </div>

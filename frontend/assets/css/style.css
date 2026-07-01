@@ -191,6 +191,7 @@ nav li.nav-user .nav-dropdown li a:hover {
     text-decoration: none;
     font-weight: 600;
     transition: background-color 0.2s ease;
+    margin-top: 20px;
 }
 
 .oe-btn:hover {
@@ -276,4 +277,32 @@ nav li.nav-user .nav-dropdown li a:hover {
 #next-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.quiz-result-card {
+    margin-top: 24px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.quiz-result-success {
+    border-color: #86efac;
+    background: #ecfdf3;
+    color: #047857;
+}
+
+.quiz-result-error {
+    border-color: #fda4af;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.quiz-result-card ul {
+    margin: 10px 0 0 18px;
+}
+
+.quiz-result-card li + li {
+    margin-top: 6px;
 }

@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/../../connectdb/db.php';
 
-header('Content-Type: application/json; charset=utf-8');
+if (basename($_SERVER['SCRIPT_FILENAME']) === basename(__FILE__)) {
+    header('Content-Type: application/json; charset=utf-8');
+}
 
 /**
  * Nộp bài khóa học và tính điểm
@@ -57,7 +59,7 @@ function submitQuiz($userId, $quizId, $answers) {
         // Tính điểm
         $percentage = ($correctCount / $totalQuestions) * 100;
         $score = ($correctCount / $totalQuestions) * 10;
-        $isPassed = $percentage >= 70 ? 1 : 0; // Đậu tiên >= 70%
+        $isPassed = $percentage >= 50 ? 1 : 0; // Đậu tiên >= 50%
         
         // Lưu bài làm vào đơ sở
         $saveStmt = $pdo->prepare("
@@ -92,29 +94,31 @@ function submitQuiz($userId, $quizId, $answers) {
  * POST: /backend/quizzes/submit_quiz.php
  * Dữ liệu gửi: { "userId": 1, "quizId": 2, "answers": { "1": 1, "2": 5, "3": 9 } }
  */
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true) ?? [];
-    
-    $userId = $data['userId'] ?? 0;
-    $quizId = $data['quizId'] ?? 0;
-    $answers = $data['answers'] ?? [];
-    
-    // Cũng hỗ trợ cốch gửi cũ (POST form)
-    if (!$userId && isset($_POST['userId'])) {
-        $userId = $_POST['userId'];
-        $answers = $_POST['answers'] ?? [];
-        $quizId = $_POST['quizId'];
+if (basename($_SERVER['SCRIPT_FILENAME']) === basename(__FILE__)) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $data = json_decode(file_get_contents('php://input'), true) ?? [];
+        
+        $userId = $data['userId'] ?? 0;
+        $quizId = $data['quizId'] ?? 0;
+        $answers = $data['answers'] ?? [];
+        
+        // Cũng hỗ trợ cốch gửi cũ (POST form)
+        if (!$userId && isset($_POST['userId'])) {
+            $userId = $_POST['userId'];
+            $answers = $_POST['answers'] ?? [];
+            $quizId = $_POST['quizId'];
+        }
+        
+        $result = submitQuiz($userId, $quizId, $answers);
+        
+        if (!$result['success']) {
+            http_response_code(400);
+        }
+        
+        echo json_encode($result);
+    } else {
+        http_response_code(405);
+        echo json_encode(['success' => false, 'message' => 'Method không hợp lệ']);
     }
-    
-    $result = submitQuiz($userId, $quizId, $answers);
-    
-    if (!$result['success']) {
-        http_response_code(400);
-    }
-    
-    echo json_encode($result);
-} else {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Method không hợp lệ']);
 }
 ?>
