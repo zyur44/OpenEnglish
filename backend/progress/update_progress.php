@@ -55,20 +55,34 @@ function getCourseProgressDetails($userId, $courseId) {
 
             $videoWatched = ($videoProgress && (int)$videoProgress['is_watched'] === 1) ? 1 : 0;
 
-            $quizStmt = $pdo->prepare("
-                SELECT uqa.is_passed
-                FROM user_quiz_attempts uqa
-                INNER JOIN quizzes q ON uqa.quiz_id = q.id
-                WHERE uqa.user_id = :userId AND q.unit_id = :unitId
-                ORDER BY uqa.created_at DESC
+            $quizCheckStmt = $pdo->prepare("
+                SELECT id
+                FROM quizzes
+                WHERE unit_id = :unitId
                 LIMIT 1
             ");
-            $quizStmt->execute([':userId' => $userId, ':unitId' => $unitId]);
-            $quizProgress = $quizStmt->fetch(PDO::FETCH_ASSOC);
+            $quizCheckStmt->execute([':unitId' => $unitId]);
+            $quizExists = $quizCheckStmt->fetch(PDO::FETCH_ASSOC) !== false;
 
-            $quizPassed = ($quizProgress && (int)$quizProgress['is_passed'] === 1) ? 1 : 0;
+            $quizPassed = 0;
+            if ($quizExists) {
+                $quizStmt = $pdo->prepare("
+                    SELECT uqa.is_passed
+                    FROM user_quiz_attempts uqa
+                    INNER JOIN quizzes q ON uqa.quiz_id = q.id
+                    WHERE uqa.user_id = :userId AND q.unit_id = :unitId
+                    ORDER BY uqa.created_at DESC
+                    LIMIT 1
+                ");
+                $quizStmt->execute([':userId' => $userId, ':unitId' => $unitId]);
+                $quizProgress = $quizStmt->fetch(PDO::FETCH_ASSOC);
 
-            $unitProgress = (($videoWatched + $quizPassed) / 2) * 100;
+                $quizPassed = ($quizProgress && (int)$quizProgress['is_passed'] === 1) ? 1 : 0;
+            }
+
+            $unitProgress = $quizExists
+                ? (($videoWatched + $quizPassed) / 2) * 100
+                : ($videoWatched * 100);
 
             $unitProgressDetails[] = [
                 'unitId' => $unitId,
