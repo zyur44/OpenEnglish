@@ -281,6 +281,14 @@ function updateUserFullName(int $userId, string $fullName): array
         $stmt = $pdo->prepare("UPDATE users SET full_name = ?, updated_at = NOW() WHERE id = ?");
         $stmt->execute([$fullName, $userId]);
 
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!empty($_SESSION['user_id']) && (int)$_SESSION['user_id'] === $userId) {
+            $_SESSION['full_name'] = $fullName;
+        }
+
         return [
             'status' => 'success',
             'message' => 'Cập nhật họ tên thành công'

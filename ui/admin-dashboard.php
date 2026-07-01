@@ -14,8 +14,6 @@
         <div class="admin-brand">OpenEnglish Admin</div>
         <ul class="admin-menu">
             <li class="active"><a href="#">Quản lý thành viên</a></li>
-            <li><a href="course.php">Quản lý khóa học</a></li>
-            <li><a href="quiz.php">Quản lý bài tập/Quiz</a></li>
             <li><a href="home.php">Quay về Trang chủ</a></li>
         </ul>
     </aside>
@@ -49,20 +47,12 @@
                             <td>Nguyễn Tuấn Anh</td>
                             <td>tuananh@gmail.com</td>
                             <td>Học viên</td>
-                            <td style="text-align: center;">
-                                <a href="../backend/admin/update_user.php?id=1" class="btn-sm btn-warning">Sửa</a>
-                                <a href="../backend/admin/delete_user.php?id=1" class="btn-sm btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa thành viên này?')">Xóa</a>
-                            </td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Trần Thị B</td>
                             <td>thib@gmail.com</td>
                             <td>Giáo viên</td>
-                            <td style="text-align: center;">
-                                <a href="../backend/admin/update_user.php?id=2" class="btn-sm btn-warning">Sửa</a>
-                                <a href="../backend/admin/delete_user.php?id=2" class="btn-sm btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa thành viên này?')">Xóa</a>
-                            </td>
                         </tr>
                     </tbody>
                 </table>

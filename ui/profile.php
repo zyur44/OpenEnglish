@@ -1,16 +1,14 @@
 <?php
 require_once __DIR__ . '/../backend/auth/auth_functions.php';
-include 'includes/header.php';
-
-$profileUser = getCurrentUserProfile();
-$profileFullName = $profileUser['full_name'] ?? '';
-$username = $profileUser['username'] ?? '';
-$email = $profileUser['email'] ?? '';
 
 $message = '';
 $messageType = '';
+$profileFullName = '';
+$username = '';
+$email = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    ensureSessionStarted();
     $userId = (int)($_SESSION['user_id'] ?? 0);
     $action = $_POST['action'] ?? '';
 
@@ -35,6 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$profileUser = getCurrentUserProfile();
+$profileFullName = $profileUser['full_name'] ?? $profileFullName;
+$username = $profileUser['username'] ?? '';
+$email = $profileUser['email'] ?? '';
+
+include 'includes/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -69,11 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
             </form>
-
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); ?>" readonly style="background-color: #ffffff; cursor: default;">
-            </div>
 
             <div class="form-group">
                 <label for="email">Địa chỉ Email</label>
