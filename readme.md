@@ -26,18 +26,17 @@
 * **FR-1.5 (Cập nhật tên và mật khẩu):** Người dùng có thể cập nhật thông tin họ và tên, mật khẩu (Mật khẩu vẫn được mã hóa trên Database)
 
 ### 2. Module Quản lý của Admin (Admin Dashboard)
-* **FR-2.1 (Xem danh sách người dùng):** Giao diện Admin cho phép hiển thị thông tin (bao gồm họ và tên, email, role) danh sách tất cả các tài khoản đang tồn tại trong hệ thống.
-* **FR-2.2 (Thêm tài khoản mới):** Admin có quyền tạo tài khoản trực tiếp cho thành viên khác thông qua Form nhập liệu (Họ tên, Email, Vai trò, Mật khẩu).
-* **FR-2.3 (Cập nhật tài khoản):** Admin có quyền chỉnh sửa thông tin như Họ và tên, email, role và mật khẩu của tài khoản hoặc xóa bỏ tài khoản người dùng trực tiếp trên giao diện quản trị.
-* **FR-2.4 (Xóa tài khoản):** Admin có quyền xóa bỏ tài khoản người dùng trực tiếp trên giao diện quản trị.
-
+* **FR-2.1 (Xem danh sách người dùng):** Trang giao diện Admin sẽ cho phép hiển thị thông tin (bao gồm họ và tên, email, role) danh sách tất cả các tài khoản đang tồn tại trong hệ thống.
+* **FR-2.2 (Thêm tài khoản mới):** Admin có quyền tạo tài khoản trực tiếp cho thành viên khác bằng cách bấm vào nút "Thêm tài khoản vào" giao diện Admin, sau đó bảng pop-up thêm tài khoản sẽ hiện lên, admin nhập thông tin tài khoản như họ và tên, email, role và password rồi bấm nút "Xác nhận" để tạo vài khoản hoặc bấm nút "Hủy" để hủy quá trình tạo tài khoản.
+* **FR-2.3 (Cập nhật tài khoản):** Admin có quyền chỉnh sửa tài khoản trực tiếp cho thành viên khác bằng cách bấm vào nút "Sửa" bên cạnh thông tin tài khoản, sau đó bảng pop-up chỉnh sửa tài khoản sẽ hiện lên, admin nhập thông tin tài khoản như họ và tên, email, role và password rồi bấm nút "Lưu" để lưu thông tin mới vào vài khoản hoặc bấm nút "Hủy" để hủy quá trình chỉnh sửa tài khoản.
+* **FR-2.4 (Xóa tài khoản):** Admin có quyền xóa bỏ tài khoản người dùng trực tiếp trên giao diện quản trị bằng cách bấm vào nút "Xóa" bên cạnh thông tin của tài khoản sau đó sẽ có 1 pop-up sẽ hiện lên để xác nhận xóa tài khoản, bấm nút "Ok" để xóa tài khoản hoặc bấm nút "Hủy" để hủy quá trình xóa tài khoản.
 ### 3. Module Khóa học & Nội dung (Courses & Content)
-* **FR-3.1 (Hiển thị danh sách khóa học):** Hệ thống hiển thị danh sách các khóa học hiện có (Ví dụ: Tiếng Anh Giao Tiếp, Luyện thi IELTS) kèm Tiêu đề, Mô tả ngắn, Ảnh đại diện (Thumbnail) và thanh tiến trình.
-* **FR-3.2 (Cấu trúc bài học - Units):** Khi nhấn vào một khóa học, hệ thống hiển thị danh sách các chương học (Units) và thanh tiến trình của nó theo đúng thứ tự thiết kế (`order_index`).
+* **FR-3.1 (Hiển thị danh sách khóa học):** Hệ thống sẽ hiển thị danh sách các khóa học hiện có kèm với Tiêu đề, Mô tả, Ảnh đại diện (Thumbnail) và thanh tiến trình.
+* **FR-3.2 (Cấu trúc bài học - Units):** Khi nhấn vào một khóa học, hệ thống sẽ hiển thị danh sách các chương học (Units) và thanh tiến trình của nó theo đúng thứ tự thiết kế (`order_index`).
 * **FR-3.3 (Trình phát bài giảng - Videos):** Trong mỗi Unit, hệ thống tích hợp trình phát video bài giảng. Video hiển thị đúng tiêu đề và hỗ trợ phát trực tiếp ổn định.
-* **FR-3.4 (Tải tài liệu đính kèm - Documents):** Cho phép học sinh xem và tải về các tài liệu bổ trợ (PDF, Word) thuộc Unit tương ứng thông qua đường dẫn lưu trữ an toàn.
+* **FR-3.4 (Tải tài liệu đính kèm - Documents):** Cho phép học sinh xem và tải về các tài liệu bổ trợ (PDF) thuộc Unit tương ứng thông qua đường dẫn lưu trữ an toàn.
 
-### 4. Module Bài tập Trắc nghiệm (Quizzes & Testing)
+### 4. Module Bài tập Trắc nghiệm (Quizzes)
 * **FR-4.1 (Tải đề bài tập):** Mỗi Unit sẽ tích hợp một bài trắc nghiệm tổng hợp. Khi học sinh bấm nút làm bài tập trong trang unit, hệ thống sẽ tự động tải danh sách câu hỏi tương ứng trong Database.
 * **FR-4.2 (Lựa chọn đáp án):** Hệ thống hiển thị câu hỏi kèm 4 lựa chọn (A, B, C, D). Học sinh chỉ được chọn duy nhất 1 đáp án cho mỗi câu hỏi.
 * **FR-4.3 (Nộp bài & Chấm điểm tự động):** Khi học sinh bấm "Nộp bài", Backend thực hiện vòng lặp đối chiếu các đáp án đã chọn với trường `is_correct = 1` trong Database để tính điểm (theo thang điểm 10).
