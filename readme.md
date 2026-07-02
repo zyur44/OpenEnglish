@@ -19,28 +19,28 @@
 ## Yêu cầu chức năng theo Module
 
 ### 1. Module Xác thực & Phân quyền (Auth & Authorization)
-* **FR-1.1 (Đăng ký tài khoản):** Cho phép người dùng mới tạo tài khoản bằng cách nhập Họ tên, Email hợp lệ và Mật khẩu. Dữ liệu sau khi kiểm tra không trùng lặp sẽ được lưu vào cơ sở dữ liệu.
+* **FR-1.1 (Đăng ký tài khoản):** Cho phép người dùng mới tạo tài khoản bằng cách nhập Họ tên, Email hợp lệ và Mật khẩu phải có tối thiểu 8 ký tự, phải có ít nhất 1 chữ Hoa và 1 chữ số. Dữ liệu sau khi kiểm tra không trùng lặp sẽ được lưu vào cơ sở dữ liệu.
 * **FR-1.2 (Đăng nhập hệ thống):** Người dùng nhập Email và Mật khẩu. Hệ thống sử dụng cơ chế kiểm tra mã hóa (`password_verify`) để xác thực.
 * **FR-1.3 (Quản lý Phiên đăng nhập):** Khi đăng nhập thành công, hệ thống phải khởi tạo `Session` để lưu giữ thông tin trạng thái: `user_id`, `user_name`, và `user_role` (1: Admin, 2: Student).
 * **FR-1.4 (Chốt chặn bảo mật - Middleware):** Tất cả các API hoặc trang web nhạy cảm phải cấu hình kiểm tra điều kiện bảo mật. Từ chối và trả về mã lỗi thích hợp (`401 Chưa đăng nhập`, `403 Không có quyền`, `405 Sai phương thức HTTP`) nếu vi phạm.
 * **FR-1.5 (Cập nhật tên và mật khẩu):** Người dùng có thể cập nhật thông tin họ và tên, mật khẩu (Mật khẩu vẫn được mã hóa trên Database)
 
 ### 2. Module Quản lý của Admin (Admin Dashboard)
-* **FR-2.1 (Xem danh sách người dùng):** Giao diện Admin cho phép hiển thị danh sách tất cả các tài khoản đang tồn tại trong hệ thống.
-* **FR-2.2 (Thêm tài khoản mới):** Admin có quyền tạo tài khoản trực tiếp cho thành viên khác thông qua Form nhập liệu (Họ tên, Email, Vai trò).
-* **FR-2.3 (Tự động cấp mật khẩu tạm):** Khi Admin tạo tài khoản thành công, hệ thống phải tự sinh một chuỗi mật khẩu ngẫu nhiên gồm 10 ký tự, băm mật khẩu bảo mật và trả về JSON hiển thị cho Admin để cấp cho người dùng đăng nhập lần đầu.
-* **FR-2.4 (Cập nhật / Xóa tài khoản):** Admin có quyền chỉnh sửa thông tin hoặc xóa bỏ tài khoản người dùng trực tiếp trên giao diện quản trị.
+* **FR-2.1 (Xem danh sách người dùng):** Giao diện Admin cho phép hiển thị thông tin (bao gồm họ và tên, email, role) danh sách tất cả các tài khoản đang tồn tại trong hệ thống.
+* **FR-2.2 (Thêm tài khoản mới):** Admin có quyền tạo tài khoản trực tiếp cho thành viên khác thông qua Form nhập liệu (Họ tên, Email, Vai trò, Mật khẩu).
+* **FR-2.3 (Cập nhật tài khoản):** Admin có quyền chỉnh sửa thông tin như Họ và tên, email, role và mật khẩu của tài khoản hoặc xóa bỏ tài khoản người dùng trực tiếp trên giao diện quản trị.
+* **FR-2.4 (Xóa tài khoản):** Admin có quyền xóa bỏ tài khoản người dùng trực tiếp trên giao diện quản trị.
 
 ### 3. Module Khóa học & Nội dung (Courses & Content)
-* **FR-3.1 (Hiển thị danh sách khóa học):** Hệ thống hiển thị danh sách các khóa học hiện có (Ví dụ: Tiếng Anh Giao Tiếp, Luyện thi IELTS) kèm Tiêu đề, Mô tả ngắn và Ảnh đại diện (Thumbnail).
-* **FR-3.2 (Cấu trúc bài học - Units):** Khi nhấn vào một khóa học, hệ thống hiển thị danh sách các chương học (Units) theo đúng thứ tự thiết kế (`order_index`).
+* **FR-3.1 (Hiển thị danh sách khóa học):** Hệ thống hiển thị danh sách các khóa học hiện có (Ví dụ: Tiếng Anh Giao Tiếp, Luyện thi IELTS) kèm Tiêu đề, Mô tả ngắn, Ảnh đại diện (Thumbnail) và thanh tiến trình.
+* **FR-3.2 (Cấu trúc bài học - Units):** Khi nhấn vào một khóa học, hệ thống hiển thị danh sách các chương học (Units) và thanh tiến trình của nó theo đúng thứ tự thiết kế (`order_index`).
 * **FR-3.3 (Trình phát bài giảng - Videos):** Trong mỗi Unit, hệ thống tích hợp trình phát video bài giảng. Video hiển thị đúng tiêu đề và hỗ trợ phát trực tiếp ổn định.
 * **FR-3.4 (Tải tài liệu đính kèm - Documents):** Cho phép học sinh xem và tải về các tài liệu bổ trợ (PDF, Word) thuộc Unit tương ứng thông qua đường dẫn lưu trữ an toàn.
 
 ### 4. Module Bài tập Trắc nghiệm (Quizzes & Testing)
-* **FR-4.1 (Tải đề bài tập):** Mỗi Unit tích hợp một bài trắc nghiệm tổng hợp. Khi học sinh truy cập, hệ thống tự động tải danh sách câu hỏi tương ứng trong Database.
+* **FR-4.1 (Tải đề bài tập):** Mỗi Unit sẽ tích hợp một bài trắc nghiệm tổng hợp. Khi học sinh bấm nút làm bài tập trong trang unit, hệ thống sẽ tự động tải danh sách câu hỏi tương ứng trong Database.
 * **FR-4.2 (Lựa chọn đáp án):** Hệ thống hiển thị câu hỏi kèm 4 lựa chọn (A, B, C, D). Học sinh chỉ được chọn duy nhất 1 đáp án cho mỗi câu hỏi.
-* **FR-4.3 (Nộp bài & Chấm điểm tự động):** Khi học sinh bấm "Nộp bài", Backend thực hiện vòng lặp đối chiếu các đáp án đã chọn với trường `is_correct = 1` trong Database để tính điểm (theo thang điểm 10 hoặc hệ số 100).
+* **FR-4.3 (Nộp bài & Chấm điểm tự động):** Khi học sinh bấm "Nộp bài", Backend thực hiện vòng lặp đối chiếu các đáp án đã chọn với trường `is_correct = 1` trong Database để tính điểm (theo thang điểm 10).
 * **FR-4.4 (Lưu lịch sử bài làm):** Hệ thống tự động ghi nhận lượt làm bài vào bảng `user_quiz_attempts` bao gồm: Điểm số, trạng thái Đạt hay Không Đạt (`is_passed = 1` nếu điểm $\ge$ 50% số điểm tối đa).
 
 ### 5. Module Tiến trình Học tập (Progress Tracking)
