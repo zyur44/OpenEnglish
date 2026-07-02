@@ -87,7 +87,12 @@ OpenEnglish/
 ├── docs/                         # Tài liệu đặc tả & Schema DB
 │   └── database_schema.sql       # File thiết kế cấu trúc bảng MySQL
 │
-└── .gitignore                    # Chặn đẩy file rác lên Git
+├── .gitignore                    # Chặn đẩy file rác lên Git
+│
+├──  LICENSE                      # MIT LICENSE
+│
+└── .index.php                    # Tự động chuyển hướng sang ui/home.php
+
 
 ```
 ---
@@ -117,5 +122,5 @@ Tất cả các thành viên thực hiện các bước sau để thiết lập 
 3. Chạy thử giao diện
    * Mở trình duyệt và truy cập:
 
-   `http://localhost/OpenEnglish/connectdb/db.php`
+   `http://localhost/OpenEnglish`
 
