@@ -59,9 +59,9 @@ function submitQuiz($userId, $quizId, $answers) {
         // Tính điểm
         $percentage = ($correctCount / $totalQuestions) * 100;
         $score = ($correctCount / $totalQuestions) * 10;
-        $isPassed = $percentage >= 50 ? 1 : 0; // Đậu tiên >= 50%
+        $isPassed = $percentage >= 50 ? 1 : 0; // Đậu trên >= 50%
         
-        // Lưu bài làm vào đơ sở
+        // Lưu bài làm vào database
         $saveStmt = $pdo->prepare("
             INSERT INTO user_quiz_attempts (user_id, quiz_id, score, is_passed, created_at)
             VALUES (?, ?, ?, ?, NOW())
@@ -102,7 +102,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) === basename(__FILE__)) {
         $quizId = $data['quizId'] ?? 0;
         $answers = $data['answers'] ?? [];
         
-        // Cũng hỗ trợ cốch gửi cũ (POST form)
+        // Cũng hỗ trợ cách gửi cũ (POST form)
         if (!$userId && isset($_POST['userId'])) {
             $userId = $_POST['userId'];
             $answers = $_POST['answers'] ?? [];
