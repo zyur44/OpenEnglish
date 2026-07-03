@@ -1,3 +1,10 @@
+-- Admin account
+-- Email: admin@gmail.com
+-- Password: 000000
+-- Student account
+-- Email: student@email.com
+-- Password: 00000000
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
