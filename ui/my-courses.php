@@ -75,7 +75,7 @@ if ($result['success']) {
                         ENT_QUOTES,
                         'UTF-8'
                     ); ?>" alt="<?php echo htmlspecialchars($course['title'], ENT_QUOTES, 'UTF-8'); ?>" style="width:100%; border-radius: 12px 12px 0 0; object-fit: cover;">
-                    <div class="oe-course-card-content" style="padding: 20px; text-align:left;">
+                    <div class="oe-course-card-content">
                         <h3><?php echo htmlspecialchars($course['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
                         <p><?php echo htmlspecialchars($course['description'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <p><strong>Units:</strong> <?php echo (int)$course['total_units']; ?></p>
